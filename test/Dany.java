@@ -10,6 +10,7 @@ public class Dany
 		// TODO Auto-generated method stub
 		
 		System.out.println("Licya");
+		System.out.println("Dany");
 
 	}
 
