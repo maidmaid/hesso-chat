@@ -16,7 +16,7 @@ public class Dany
 
 	public void afficher()
 	{
-		System.out.println("Licya");
+		System.out.println("Banane3");
 	}
 	
 	public void afficher2()
