@@ -10,11 +10,18 @@ public class Dany
 		// TODO Auto-generated method stub
 		
 		System.out.println("Licya");
+		
+		
 
 	}
 
 	public void afficher()
 	{
 		System.out.println("Dany");
+	}
+	
+	public void afficher2()
+	{
+		System.out.println("Licya");
 	}
 }
