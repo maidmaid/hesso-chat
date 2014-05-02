@@ -13,4 +13,8 @@ public class Dany
 
 	}
 
+	public void afficher()
+	{
+		System.out.println("Dany");
+	}
 }
