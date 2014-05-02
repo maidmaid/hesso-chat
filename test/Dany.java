@@ -21,6 +21,6 @@ public class Dany
 	
 	public void afficher2()
 	{
-		System.out.println("Licya");
+		System.out.println("Dany");
 	}
 }
