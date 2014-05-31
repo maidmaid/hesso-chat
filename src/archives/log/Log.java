@@ -1,4 +1,4 @@
-package log;
+package archives.log;
 
 import java.io.IOException;
 import java.util.Scanner;
