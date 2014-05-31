@@ -1,10 +1,18 @@
 package client.ui;
 
-import javax.swing.JFrame;
-
 import client.chat.ClientChat;
 
-public class ClientApp extends JFrame
+public class ClientApp
 {
+
 	private ClientChat chat;
+	
+	public ClientApp()
+	{
+		ClientConnexion clientConnexion = new ClientConnexion();
+		clientConnexion.setVisible(true);
+	
+	}
+	
+	
 }

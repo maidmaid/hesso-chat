@@ -25,5 +25,6 @@ CLIENTS
 
 Point 4 : Your imagination 
 
-
-
+1.Connexion à l'aide de sockets(1)
+2.Client doit enregistrer un utilisateur(1)
+5.Client envoyé message à utilisateur enregistré(1)
