@@ -1,0 +1,29 @@
+SERVER 
+
+1. Nombre illimité de client(1)
+2. Si un client se déconnecte le server en tiens compte et les autres en sont avertis(2)
+3. Transmission de message(1)
+4. Cf what's up, quand on remonte une conversation on peut effacer un ancien message(2)
+5.Communication entre plusieurs clients (2)
+6.Dans un premier temps renvoie à tous (1) et ensuite a qui est destiné le message(2)
+7.Écrire dans un fichier log : heure, qui (2)
+8.Création d'un hisotrique mensuel dans un fichier(3)
+9.Journal de log(3)
+10. Enregistrement des messages dans un fichier (à discuter un fichier par communication) avec possibilité d'utiliser une HashMap(2)
+11. Utilisation de commande put-get (3)
+
+CLIENTS
+1.Connexion à l'aide de sockets(1)
+2.Client doit enregistrer un utilisateur(1)
+3.Client doit se souvenir du dernier utilisateur enregistré(2)
+4.Client peut se connecter au serveur et récupérer les messages par utilisateur donné(3)
+5.Client envoyé message à utilisateur enregistré(1)
+6.Client écrire log dans un fichier(2)
+7.Historique des conversation (3)
+8.Journal de log (3)
+
+
+Point 4 : Your imagination 
+
+
+
