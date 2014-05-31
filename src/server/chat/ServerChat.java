@@ -3,6 +3,8 @@ package server.chat;
 import java.io.IOException;
 
 import server.network.Server;
+import server.network.event.ChangeEvent;
+import server.network.event.ChangeListener;
 
 /**
  * ServerChat gère la logique métier du chat côté serveur
@@ -17,13 +19,11 @@ public class ServerChat
 	 */
 	public ServerChat()
 	{
-		try
-		{
-			server = new Server();
-		}
-		catch(IOException e)
-		{
-			e.printStackTrace();
-		}
+		server = new Server();
+	}
+	
+	public Server getServer()
+	{
+		return server;
 	}
 }
