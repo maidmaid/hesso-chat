@@ -1,5 +1,7 @@
 package server.chat;
 
+import java.io.IOException;
+
 import server.network.Server;
 
 /**
@@ -15,6 +17,13 @@ public class ServerChat
 	 */
 	public ServerChat()
 	{
-		server = new Server();
+		try
+		{
+			server = new Server();
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
 	}
 }
