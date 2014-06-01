@@ -1,14 +1,11 @@
 package server.ui;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-
 import server.chat.ServerChat;
+import server.log.ServerLogger;
 import server.network.Server;
 import server.network.event.ChangeEvent;
 import server.network.event.ChangeListener;
@@ -20,6 +17,7 @@ import server.network.event.ChangeListener;
 public class ServerApp extends JFrame
 {
 	private ServerChat chat;
+	Logger logger;
 	private JTextArea areaLog;
 	
 	/**
@@ -32,6 +30,9 @@ public class ServerApp extends JFrame
 		JScrollPane scrollPane = new JScrollPane(areaLog); 
 		areaLog.setEditable(false);
 		add(areaLog);
+		
+		// Logger
+		logger = ServerLogger.getLogger(areaLog);
 		
 		// Instancie le server de chat
 		chat = new ServerChat();
@@ -54,17 +55,16 @@ public class ServerApp extends JFrame
 		public void stateChanged(ChangeEvent e)
 		{
 			Server server = (Server)e.getSource();
-			
 			switch (server.getState())
 			{
 				case ENABLE:
-					areaLog.append("Serveur actif \n");
+					logger.info("Serveur actif");
 					break;
 				case DISABLE:
-					areaLog.append("Serveur inactif \n");
+					logger.warning("Serveur inactif");
 					break;
 				case PENDING:
-					areaLog.append("Serveur en attente... \n");
+					logger.info("Serveur en attente...");
 					break;
 				default:
 					break;
