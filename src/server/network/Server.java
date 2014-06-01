@@ -54,11 +54,10 @@ public class Server extends ServerAbstract
 		}
 		catch(IOException e)
 		{
-			setState(State.DISABLE);
-			e.printStackTrace();
+			setState(State.DISABLE, e.getMessage());
 		}
 	}
-	
+
 	/**
 	 * Runnable implementation to accept news clients
 	 * @author DM

@@ -58,13 +58,13 @@ public class ServerApp extends JFrame
 			switch (server.getState())
 			{
 				case ENABLE:
-					logger.info("Serveur actif");
+					logger.info("Serveur actif. " + server.getStateMessage());
 					break;
 				case DISABLE:
-					logger.warning("Serveur inactif");
+					logger.warning("Serveur inactif. " + server.getStateMessage());
 					break;
 				case PENDING:
-					logger.info("Serveur en attente...");
+					logger.info("Serveur en attente... " + server.getStateMessage() );
 					break;
 				default:
 					break;

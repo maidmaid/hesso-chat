@@ -13,6 +13,7 @@ public abstract class ServerAbstract
 {
 	protected ArrayList<ChangeListener> changeListeners;
 	private State state;
+	private String stateMessage;
 	
 	public enum State 
 	{
@@ -64,6 +65,14 @@ public abstract class ServerAbstract
 			ChangeEvent e = new ChangeEvent(this);
 			l.stateChanged(e);
 		}
+		
+		stateMessage = "";
+	}
+	
+	protected void setState(State state, String message)
+	{
+		stateMessage = message;
+		setState(state);
 	}
 	
 	/**
@@ -83,5 +92,10 @@ public abstract class ServerAbstract
 	public State getState()
 	{
 		return state;
+	}
+	
+	public String getStateMessage()
+	{
+		return stateMessage;
 	}
 }
