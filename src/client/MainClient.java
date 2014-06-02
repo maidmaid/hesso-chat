@@ -1,6 +1,5 @@
 package client;
 
-import client.network.Client;
 import client.ui.ClientApp;
 
 public class MainClient

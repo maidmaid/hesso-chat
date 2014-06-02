@@ -4,38 +4,32 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Scanner;
 
-import client.ui.ClientApp;
-import server.network.*;
+import client.ui.ClientMessage;
 
 public class Client
 {
+	private ClientMessage clientMessage;
 	Socket socket;
 	Thread threadRead;
 	BufferedReader in;
 	PrintWriter out;
 
-	public Client()
+	public Client(ClientMessage clientMessage)
 	{
+		this.clientMessage = new ClientMessage();
+		
 		try
 		{
 			socket = new Socket(/*InetAddress.getLocalHost()*/"127.0.0.1",1234);
-			threadRead = new Thread(new Read(socket)); 
+			out = new PrintWriter(socket.getOutputStream());
+			threadRead = new Thread(new Read()); 
 			threadRead.start();
 			Scanner scan = new Scanner(System.in);
-			out = new PrintWriter(socket.getOutputStream());
-
-			while(true)
-			{
-				System.out.println("Please, write your message : ");
-				String Clientmessage = scan.nextLine();
-				out.println(Clientmessage);
-				out.flush();
-			}
+			out = new PrintWriter(socket.getOutputStream());		
 		}
 		catch(UnknownHostException e)
 		{
@@ -47,27 +41,26 @@ public class Client
 		}
 	}
 
-	public static void main(String[] args)
+	public void send(String message)
 	{
-		Client client = new Client();
+		out.println(message);
+		out.flush();
 	}
 
 	public class Read implements Runnable
-	{
-		private Socket socket;
-
-		public Read(Socket socket)
-		{
-			this.socket = socket;
-		}
+	{		
 		@Override
-		public void run() {
-			// TODO Auto-generated method stub
+		public void run()
+		{
 			try
 			{
-				BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-				String message = in.readLine();
-				System.out.println(message);
+				while(true)
+				{
+					BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+					String message = in.readLine();
+					System.out.println(message);
+					// clientMessage.
+				}
 			}
 			catch(IOException e)
 			{

@@ -1,23 +1,21 @@
 package client.ui;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 import client.chat.ClientChat;
+import client.network.Client;
 
 public class ClientApp  extends JFrame
 {
-
-	private ClientChat chat;
-	
+	private ClientChat chat;	
 	private ClientConnexion clientConnexion;
-	
 	private ClientMessage clientMessage;
-	
+
 	public ClientApp()
 	{
 		clientConnexion = new ClientConnexion();
 		clientMessage = new ClientMessage();
+		chat = new ClientChat();
 		
 		this.setTitle("Client Application");
 		this.setSize(400, 330);
@@ -27,8 +25,5 @@ public class ClientApp  extends JFrame
 		//this.setContentPane(clientConnexion);
 		this.setContentPane(clientMessage);
 		this.setVisible(true);
-
 	}
-	
-	
 }

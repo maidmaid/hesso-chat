@@ -13,6 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import client.network.Client;
+
 public class ClientMessage extends JPanel
 							implements ActionListener
 {
@@ -27,6 +29,8 @@ public class ClientMessage extends JPanel
 	private JPanel readMessagePan;
 	
 	private JButton btEnterMessage;
+	
+	private Client client;
 	
 	public ClientMessage(){
 		
@@ -48,11 +52,11 @@ public class ClientMessage extends JPanel
 		readMessagePan.setBorder(BorderFactory.createLineBorder(Color.darkGray));
 		add(readMessagePan, BorderLayout.CENTER);
 		
-		inputMessage = new JTextField();
+		inputMessage = new JTextField("Rédiger message");
 		police = new Font("Ds-digital", Font.TYPE1_FONT,20);
 		inputMessage.setFont(police);
 		inputMessage.setEditable(true);
-		inputMessage.setBackground(Color.lightGray);
+		inputMessage.setBackground(Color.white);
 		inputMessage.setHorizontalAlignment(JTextField.CENTER);
 		inputMessage.setPreferredSize(new Dimension(280,30));
 		inputMessage.setMargin(null);           
@@ -60,7 +64,7 @@ public class ClientMessage extends JPanel
 		
 		inputMessagePan = new JPanel();
 		inputMessagePan.setPreferredSize(new Dimension(360,100));
-		inputMessagePan.setBackground(Color.lightGray);
+		inputMessagePan.setBackground(Color.white);
 		
 		inputMessagePan.add(inputMessage);
 		inputMessagePan.setBorder(BorderFactory.createLineBorder(Color.darkGray));
@@ -78,6 +82,7 @@ public class ClientMessage extends JPanel
 		if(e.getSource() == btEnterMessage)
 		{
 			message = inputMessage.getText();
+			client.send(message);
 		}
 	}
 	
