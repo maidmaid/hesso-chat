@@ -1,29 +1,30 @@
-package server.chat;
+package server.controller;
 
 import java.io.IOException;
 
 import server.network.Server;
 import server.network.event.ChangeEvent;
 import server.network.event.ServerListener;
+import server.view.ServerFrame;
 
 /**
  * ServerChat gère la logique métier du chat côté serveur
  * @author DM
  */
-public class ServerChat
+public class ServerController
 {
 	private Server server;
+	private ServerFrame app;
 	
 	/**
 	 * Construit le chat du serveur
 	 */
-	public ServerChat()
+	public ServerController()
 	{
 		server = new Server();
-	}
-	
-	public Server getServer()
-	{
-		return server;
+		app = new ServerFrame();
+		
+		server.addServerListener(app);
+		server.start();
 	}
 }
