@@ -17,19 +17,12 @@ import javax.swing.JTextField;
 
 import client.chat.ClientChat;
 
-public class ClientConnexion extends JPanel
-implements ActionListener
+public class ClientConnexion extends JPanel implements ActionListener
 {
-
-	
 	private JTextField ipText;
-
 	private JLabel ipLabel;
-
 	private JPanel ipTextPan;
-
 	private JButton btEnter;
-
 	private String ipAdress;
 	private String frameName = "Connection Client";
 	
@@ -62,19 +55,15 @@ implements ActionListener
 		add(btEnter, BorderLayout.SOUTH);
 		btEnter.setPreferredSize(new Dimension(100,60));
 		btEnter.addActionListener(this);
-
 	}	
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+	public void actionPerformed(ActionEvent e)
+	{
 		if(e.getSource() == btEnter)
 		{
 			ipAdress = ipText.getText();
 		}
-
 	}
-
-
 }
 
