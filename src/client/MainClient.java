@@ -7,6 +7,6 @@ public class MainClient
 {
 	public static void main(String[] args)
 	{
-		ClientApp clientApp = new ClientApp();
+		new ClientApp();
 	}
 }
