@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import server.network.Server;
 import server.network.event.ChangeEvent;
-import server.network.event.ChangeListener;
+import server.network.event.ServerListener;
 
 /**
  * ServerChat gère la logique métier du chat côté serveur

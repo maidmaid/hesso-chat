@@ -3,7 +3,7 @@ package server.network;
 import java.util.ArrayList;
 
 import server.network.event.ChangeEvent;
-import server.network.event.ChangeListener;
+import server.network.event.ServerListener;
 
 /**
  * Server abstact
@@ -11,7 +11,7 @@ import server.network.event.ChangeListener;
  */
 public abstract class ServerAbstract
 {
-	protected ArrayList<ChangeListener> changeListeners;
+	protected ArrayList<ServerListener> listeners;
 	private State state;
 	private String stateMessage;
 	
@@ -27,32 +27,32 @@ public abstract class ServerAbstract
 	 */
 	public ServerAbstract()
 	{
-		changeListeners = new ArrayList<ChangeListener>();
+		listeners = new ArrayList<ServerListener>();
 		setState(State.DISABLE);
 	}
 	
 	/**
-	 * Adds an <code>ChangeListener</code> to the server
+	 * Adds an <code>ServerListener</code> to the server
 	 */
-	public void addChangeListener(ChangeListener l)
+	public void addServerListener(ServerListener l)
 	{
-		changeListeners.add(l);
+		listeners.add(l);
 	}
 	
 	/**
-	 * Removes an <code>ChangeListener</code> from the server
+	 * Removes an <code>ServerListener</code> from the server
 	 */
-	public void removeChangeListener(ChangeListener l)
+	public void removeServerListener(ServerListener l)
 	{
-		changeListeners.remove(l);
+		listeners.remove(l);
 	}
 	
 	/**
 	 * Returns an list of all the <code>ChangeListener</code>s added
 	 */
-	public ArrayList<ChangeListener> getChangeListeners()
+	public ArrayList<ServerListener> getServerListeners()
 	{
-		return changeListeners;
+		return listeners;
 	}
 	
 	/**
@@ -60,7 +60,7 @@ public abstract class ServerAbstract
 	 */
 	public void fireStateChanged()
 	{
-		for (ChangeListener l : changeListeners)
+		for (ServerListener l : listeners)
 		{
 			ChangeEvent e = new ChangeEvent(this);
 			l.stateChanged(e);

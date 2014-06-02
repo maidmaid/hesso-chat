@@ -8,7 +8,7 @@ import server.chat.ServerChat;
 import server.log.ServerLogger;
 import server.network.Server;
 import server.network.event.ChangeEvent;
-import server.network.event.ChangeListener;
+import server.network.event.ServerListener;
 
 /**
  * ServerApp est l'application chat côté serveur
@@ -36,7 +36,7 @@ public class ServerApp extends JFrame
 		
 		// Instancie le server de chat
 		chat = new ServerChat();
-		chat.getServer().addChangeListener(new ServerChangeListener());
+		chat.getServer().addServerListener(new ServerActions());
 		chat.getServer().start();
 		
 		// Paramètre la JFrame
@@ -50,7 +50,7 @@ public class ServerApp extends JFrame
 	 * Listener change server
 	 * @author DM
 	 */
-	public class ServerChangeListener implements ChangeListener
+	public class ServerActions implements ServerListener
 	{
 		public void stateChanged(ChangeEvent e)
 		{

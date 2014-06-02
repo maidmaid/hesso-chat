@@ -4,7 +4,7 @@ package server.network.event;
  * The listener interface for receiving change events.
  * @author DM
  */
-public interface ChangeListener
+public interface ServerListener
 {
 	/**
 	 * Invoked when an change state occurs.
