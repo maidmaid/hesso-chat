@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 import client.ui.ClientMessage;
 
-public class Client
+public class Client extends ClientAbstract
 {
 	private ClientMessage clientMessage;
 	Socket socket;
