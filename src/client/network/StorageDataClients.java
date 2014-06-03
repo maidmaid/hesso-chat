@@ -5,18 +5,20 @@ import java.util.Hashtable;
 public class StorageDataClients 
 {
 	private Hashtable<Integer,Client>clientsData;
-	
+
 	public StorageDataClients()
 	{
 		clientsData = new Hashtable<Integer,Client>();
 	}
-	
+
 	public void addDataClient(Client client)
 	{
-	int id = client.getId();
-	clientsData.put(id,client);
+
+		int id = client.getId();
+		client.setRegistred(true);
+		clientsData.put(id,client);
 	}
-	
+
 	public Client getDataClient(int id)
 	{
 		if(ClientsDataExists(id)==true)
@@ -25,12 +27,12 @@ public class StorageDataClients
 		}
 		else
 		{
-			System.out.println("Cet utilisateur n'existe pas.");
+			System.out.println("This Client does not exist!");
 			return null;
 		}
-		
+
 	}
-	
+
 	public void deleteData(int id)
 	{
 		if(ClientsDataExists(id)==true)
@@ -39,10 +41,10 @@ public class StorageDataClients
 		}
 		else
 		{
-			System.out.println("Ce contact n'existe pas");
+			System.out.println("This Client does not exist!");
 		}
 	}
-	
+
 	private boolean ClientsDataExists(int id)
 	{
 		return clientsData.containsKey(id);
