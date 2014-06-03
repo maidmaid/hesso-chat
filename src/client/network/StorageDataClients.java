@@ -23,6 +23,24 @@ public class StorageDataClients
 		{
 			return clientsData.get(id);
 		}
+		else
+		{
+			System.out.println("Cet utilisateur n'existe pas.");
+			return null;
+		}
+		
+	}
+	
+	public void deleteData(int id)
+	{
+		if(ClientsDataExists(id)==true)
+		{
+			clientsData.remove(id);
+		}
+		else
+		{
+			System.out.println("Ce contact n'existe pas");
+		}
 	}
 	
 	private boolean ClientsDataExists(int id)
