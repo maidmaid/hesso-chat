@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -20,6 +21,7 @@ import controller.ClientController;
 
 public class ClientConnexionPanel extends JPanel implements ActionListener
 {
+	private ClientController controller;
 	private JTextField ipText;
 	private JLabel ipLabel;
 	private JPanel ipTextPan;
@@ -27,8 +29,9 @@ public class ClientConnexionPanel extends JPanel implements ActionListener
 	private String ipAdress;
 	private String frameName = "Connection Client";
 	
-	public ClientConnexionPanel()
+	public ClientConnexionPanel(ClientController controller)
 	{
+		this.controller = controller;
 		// Initialization of the ip's JLabel
 		ipLabel = new JLabel("IP Address");
 		add(this.ipLabel,BorderLayout.NORTH);
@@ -63,8 +66,23 @@ public class ClientConnexionPanel extends JPanel implements ActionListener
 	{
 		if(e.getSource() == btEnter)
 		{
+			//setIpAdress(ipText.getText());
 			ipAdress = ipText.getText();
+			try
+			{
+				controller.getModel().getClient().connect(ipAdress);
+			} catch (IOException exception) {
+				System.out.println("ERREUR " + exception.getMessage());
+			}
 		}
 	}
+
+	public String getIpAdress() {
+		return ipAdress;
+	}
+//
+//	public void setIpAdress(String ipAdress) {
+//		this.ipAdress = ipAdress;
+//	}
 }
 

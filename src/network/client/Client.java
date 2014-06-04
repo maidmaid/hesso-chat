@@ -5,25 +5,33 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.net.SocketAddress;
 import java.net.UnknownHostException;
 import java.util.Scanner;
 
+import view.client.ClientConnexionPanel;
 import view.client.ClientMessagePanel;
 
 
 public class Client extends ClientAbstract
 {
 	private ClientMessagePanel clientMessage;
+	private ClientConnexionPanel clientConnexion;
 	Socket socket;
 	Thread threadRead;
 	BufferedReader in;
 	PrintWriter out;
+	String ip;
 
 	public Client()
 	{
 		try
 		{
-			socket = new Socket(/*InetAddress.getLocalHost()*/"127.0.0.1",1234);
+			
+			//socket = new Socket(ip,1234);
+			socket = new Socket();
+			//connectToServer(socket);
+			//ip = clientConnexion.getIpAdress();
 			out = new PrintWriter(socket.getOutputStream());
 			threadRead = new Thread(new Read()); 
 			threadRead.start();
@@ -66,5 +74,25 @@ public class Client extends ClientAbstract
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	public String getIP(String ip)
+	{
+		ip = clientConnexion.getIpAdress();
+		return ip;
+	}
+	
+//	public void connectToServer(Socket socket) throws IOException, IOException
+//	{
+//		System.out.println("\nWaiting for connection");
+//		//socket = new Socket(getIP(ip),1234);
+//		System.out.println("Je suis passé par là");
+//		System.out.println("\nValeur de la Socket " + socket);
+//		System.out.println("\nConnected to : " + socket.getInetAddress().getHostName());
+//	}
+	
+	public void connect(String ip) throws IOException, IOException
+	{
+		socket = new Socket(ip, 1234);
 	}
 }

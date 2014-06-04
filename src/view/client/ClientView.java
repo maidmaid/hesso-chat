@@ -16,12 +16,13 @@ public class ClientView extends JFrame
 	{
 		this.controller = controller;
 		
-		connexionPanel = new ClientConnexionPanel();
-		messagePanel = new ClientMessagePanel();
-		setContentPane(messagePanel);
+		connexionPanel = new ClientConnexionPanel(controller);
+		//messagePanel = new ClientMessagePanel();
+		//setContentPane(messagePanel);
+		setContentPane(connexionPanel);
 		
 		setTitle("Client Application");
-		setSize(400, 330);
+		setSize(400, 600);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setResizable(false);
