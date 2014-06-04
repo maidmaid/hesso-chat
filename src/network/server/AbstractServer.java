@@ -11,7 +11,7 @@ import network.server.event.ServerListener;
  * Server abstact
  * @author DM
  */
-public abstract class ServerAbstract
+public abstract class AbstractServer
 {
 	protected ArrayList<ServerListener> listeners;
 	private State state;
@@ -27,7 +27,7 @@ public abstract class ServerAbstract
 	/**
 	 * Constructs an ServerAbstract object
 	 */
-	public ServerAbstract()
+	public AbstractServer()
 	{
 		listeners = new ArrayList<ServerListener>();
 		setState(State.DISABLE);

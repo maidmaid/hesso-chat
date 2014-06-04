@@ -14,7 +14,7 @@ import network.client.Client;
  * Server manages the network's communication with clients
  * @author DM
  */
-public class Server extends ServerAbstract
+public class Server extends AbstractServer
 {
 	private ArrayList<Client> clients;
 	private ArrayList<Socket> sockets;
