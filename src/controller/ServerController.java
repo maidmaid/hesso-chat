@@ -23,6 +23,6 @@ public class ServerController extends AbstractController
 	
 	public ServerModel getModel()
 	{
-		return (ServerModel) model;
+		return (ServerModel) super.getModel();
 	}
 }

@@ -13,12 +13,16 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import controller.AbstractController;
+
+import view.AbstractView;
+
 import network.client.Client;
 
 
-public class ClientMessagePanel extends JPanel
-							implements ActionListener
+public class ClientMessagePanel extends AbstractClientView implements ActionListener
 {
+	private JPanel panel;
 	private String frameName = "Message Client";
 	private String message;
 	private String readText;
@@ -33,7 +37,11 @@ public class ClientMessagePanel extends JPanel
 	
 	private Client client;
 	
-	public ClientMessagePanel(){
+	public ClientMessagePanel(AbstractController controller)
+	{	
+		super(controller);
+		
+		panel = new JPanel();
 		
 		readMessage = new JTextField();
 		Font police = new Font("Ds-digital", Font.TYPE1_FONT,20);
@@ -51,7 +59,7 @@ public class ClientMessagePanel extends JPanel
 		
 		readMessagePan.add(readMessage);
 		readMessagePan.setBorder(BorderFactory.createLineBorder(Color.darkGray));
-		add(readMessagePan, BorderLayout.CENTER);
+		panel.add(readMessagePan, BorderLayout.CENTER);
 		
 		inputMessage = new JTextField("Rédiger message");
 		police = new Font("Ds-digital", Font.TYPE1_FONT,20);
@@ -69,10 +77,10 @@ public class ClientMessagePanel extends JPanel
 		
 		inputMessagePan.add(inputMessage);
 		inputMessagePan.setBorder(BorderFactory.createLineBorder(Color.darkGray));
-		add(inputMessagePan, BorderLayout.CENTER);
+		panel.add(inputMessagePan, BorderLayout.CENTER);
 		
 		btEnterMessage = new JButton("Send Message");
-		add(btEnterMessage, BorderLayout.CENTER);
+		panel.add(btEnterMessage, BorderLayout.CENTER);
 		btEnterMessage.setPreferredSize(new Dimension(200,60));
 		btEnterMessage.addActionListener(this);
 	}

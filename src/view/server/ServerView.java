@@ -50,7 +50,7 @@ public class ServerView extends AbstractView implements ServerListener
 	
 	public ServerController getController()
 	{
-		return (ServerController) controller; 
+		return (ServerController) super.getController(); 
 	}
 
 	public void stateChanged(ChangeEvent e)

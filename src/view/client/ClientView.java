@@ -2,31 +2,36 @@ package view.client;
 
 import javax.swing.JFrame;
 
+import view.AbstractView;
+
 import network.client.Client;
 
+import controller.AbstractController;
 import controller.ClientController;
 
-public class ClientView extends JFrame
+public class ClientView extends AbstractClientView
 {
-	private ClientController controller;
+	private JFrame frame;
 	private ClientConnexionPanel connexionPanel;
 	private ClientMessagePanel messagePanel;
 	
-	public ClientView(ClientController controller)
+	public ClientView(AbstractController controller)
 	{
-		this.controller = controller;
+		super(controller);
+		
+		frame = new JFrame();
 		
 		connexionPanel = new ClientConnexionPanel(controller);
 		//messagePanel = new ClientMessagePanel();
 		//setContentPane(messagePanel);
-		setContentPane(connexionPanel);
+		frame.setContentPane(connexionPanel.getContainer());
 		
-		setTitle("Client Application");
-		setSize(400, 600);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setLocationRelativeTo(null);
-		setResizable(false);
-		setVisible(true);
+		frame.setTitle("Client Application");
+		frame.setSize(400, 600);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setLocationRelativeTo(null);
+		frame.setResizable(false);
+		frame.setVisible(true);
 		
 		//String message = 
 		//controller.getModel().getClient().send(message);

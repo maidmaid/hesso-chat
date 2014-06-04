@@ -4,7 +4,7 @@ import controller.AbstractController;
 
 public abstract class AbstractView
 {
-	protected AbstractController controller;
+	private AbstractController controller;
 	
 	public AbstractView(AbstractController controller)
 	{

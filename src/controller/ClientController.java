@@ -1,24 +1,25 @@
 package controller;
 
+import model.AbstractModel;
 import model.ClientModel;
 import view.client.ClientConnexionPanel;
 import view.client.ClientMessagePanel;
 import view.client.ClientView;
 
 
-public class ClientController
+public class ClientController extends AbstractController
 {
-	private ClientModel model;
 	private ClientView view;
 	
-	public ClientController(ClientModel model)
+	public ClientController(AbstractModel model)
 	{
-		this.model = model;
+		super(model);
 		view = new ClientView(this);
 	}
 	
+	@Override
 	public ClientModel getModel()
 	{
-		return model;
+		return (ClientModel) super.getModel();
 	}
 }

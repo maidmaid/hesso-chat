@@ -15,13 +15,16 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import view.AbstractView;
+
+import controller.AbstractController;
 import controller.ClientController;
 
 
 
-public class ClientConnexionPanel extends JPanel implements ActionListener
+public class ClientConnexionPanel extends AbstractClientView implements ActionListener
 {
-	private ClientController controller;
+	private JPanel container;
 	private JTextField ipText;
 	private JLabel ipLabel;
 	private JPanel ipTextPan;
@@ -29,12 +32,15 @@ public class ClientConnexionPanel extends JPanel implements ActionListener
 	private String ipAdress;
 	private String frameName = "Connection Client";
 	
-	public ClientConnexionPanel(ClientController controller)
+	public ClientConnexionPanel(AbstractController controller)
 	{
-		this.controller = controller;
+		super(controller);
+		
+		container = new JPanel();
+		
 		// Initialization of the ip's JLabel
 		ipLabel = new JLabel("IP Address");
-		add(this.ipLabel,BorderLayout.NORTH);
+		container.add(this.ipLabel, BorderLayout.NORTH);
 
 		//Initialization of the JTextField ipText
 		ipText = new JTextField(15);
@@ -52,11 +58,11 @@ public class ClientConnexionPanel extends JPanel implements ActionListener
 
 		ipTextPan.add(ipText);
 		ipTextPan.setBorder(BorderFactory.createLineBorder(Color.darkGray));
-		add(ipTextPan, BorderLayout.CENTER);
+		container.add(ipTextPan, BorderLayout.CENTER);
 
 		//Initialization of the Enter button
 		btEnter = new JButton("Enter");
-		add(btEnter, BorderLayout.SOUTH);
+		container.add(btEnter, BorderLayout.SOUTH);
 		btEnter.setPreferredSize(new Dimension(100,60));
 		btEnter.addActionListener(this);
 	}	
@@ -70,7 +76,8 @@ public class ClientConnexionPanel extends JPanel implements ActionListener
 			ipAdress = ipText.getText();
 			try
 			{
-				controller.getModel().getClient().connect(ipAdress);
+				//controller.getModel().getClient().connect(ipAdress);
+				getController().getModel().getClient().connect(ipAdress);
 			} catch (IOException exception) {
 				System.out.println("ERREUR " + exception.getMessage());
 			}
@@ -79,6 +86,11 @@ public class ClientConnexionPanel extends JPanel implements ActionListener
 
 	public String getIpAdress() {
 		return ipAdress;
+	}
+	
+	public JPanel getContainer()
+	{
+		return container;
 	}
 //
 //	public void setIpAdress(String ipAdress) {

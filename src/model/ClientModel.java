@@ -2,7 +2,7 @@ package model;
 
 import network.client.Client;
 
-public class ClientModel
+public class ClientModel extends AbstractModel
 {
 	private Client client;
 	

@@ -4,7 +4,7 @@ import model.AbstractModel;
 
 public abstract class AbstractController
 {
-	protected AbstractModel model;
+	private AbstractModel model;
 	
 	public AbstractController(AbstractModel model)
 	{
