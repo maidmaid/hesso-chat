@@ -1,38 +1,28 @@
 package controller;
 
-import java.io.IOException;
-
-import model.ClientModel;
+import model.AbstractModel;
 import model.ServerModel;
-import network.server.Server;
-import network.server.event.ChangeEvent;
-import network.server.event.ServerListener;
 import view.server.ServerView;
 
 /**
  * ServerChat gère la logique métier du chat côté serveur
  * @author DM
  */
-public class ServerController
+public class ServerController extends AbstractController
 {
-	private ServerModel model;
 	private ServerView view;
 	
-	/**
-	 * Construit le chat du serveur
-	 * @param model 
-	 */
-	public ServerController(ServerModel model)
+	public ServerController(AbstractModel model)
 	{
-		this.model = model;
-		view = new ServerView(this);
+		super(model);
 		
-		model.getServer().addServerListener(view);
-		model.getServer().start();
+		view = new ServerView(this);
+		getModel().getServer().addServerListener(view);
+		getModel().getServer().start();
 	}
 	
 	public ServerModel getModel()
 	{
-		return model;
+		return (ServerModel) model;
 	}
 }

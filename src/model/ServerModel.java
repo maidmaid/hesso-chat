@@ -2,7 +2,7 @@ package model;
 
 import network.server.Server;
 
-public class ServerModel
+public class ServerModel extends AbstractModel
 {
 	private Server server;
 	
