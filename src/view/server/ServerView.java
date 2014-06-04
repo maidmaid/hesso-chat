@@ -9,6 +9,7 @@ import javax.swing.JTextArea;
 import view.AbstractView;
 import network.server.Server;
 import network.server.event.ChangeEvent;
+import network.server.event.ClientEvent;
 import network.server.event.ServerListener;
 import log.ServerLogger;
 import controller.AbstractController;
@@ -70,5 +71,10 @@ public class ServerView extends AbstractView implements ServerListener
 			default:
 				break;
 		}	
+	}
+
+	public void clientConnected(ClientEvent e)
+	{
+		logger.info("Nouveau client");
 	}
 }

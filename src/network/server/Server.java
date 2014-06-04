@@ -76,7 +76,7 @@ public class Server extends ServerAbstract
 	    		{
 					Socket socket = server.accept();
 					//sockets.add(socket);
-					System.out.println("Nouveau client");
+					fireClientConnected();
 	    		}
 			}
 	    	catch (IOException e)

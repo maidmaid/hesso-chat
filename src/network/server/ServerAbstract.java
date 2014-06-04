@@ -3,6 +3,7 @@ package network.server;
 import java.util.ArrayList;
 
 import network.server.event.ChangeEvent;
+import network.server.event.ClientEvent;
 import network.server.event.ServerListener;
 
 
@@ -98,5 +99,17 @@ public abstract class ServerAbstract
 	public String getStateMessage()
 	{
 		return stateMessage;
+	}
+	
+	/**
+	 * Notifies all listeners that client connected
+	 */
+	public void fireClientConnected()
+	{
+		for (ServerListener l : listeners)
+		{
+			ClientEvent e = new ClientEvent(this);
+			l.clientConnected(e);
+		}
 	}
 }
