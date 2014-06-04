@@ -1,4 +1,4 @@
-package server.log;
+package log;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;

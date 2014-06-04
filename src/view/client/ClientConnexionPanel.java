@@ -1,4 +1,4 @@
-package client.ui;
+package view.client;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -14,10 +14,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import controller.ClientController;
 
-import client.chat.ClientChat;
 
-public class ClientConnexion extends JPanel implements ActionListener
+
+public class ClientConnexionPanel extends JPanel implements ActionListener
 {
 	private JTextField ipText;
 	private JLabel ipLabel;
@@ -26,7 +27,7 @@ public class ClientConnexion extends JPanel implements ActionListener
 	private String ipAdress;
 	private String frameName = "Connection Client";
 	
-	public ClientConnexion()
+	public ClientConnexionPanel()
 	{
 		// Initialization of the ip's JLabel
 		ipLabel = new JLabel("IP Address");

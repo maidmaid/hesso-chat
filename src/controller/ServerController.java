@@ -1,11 +1,12 @@
-package server.controller;
+package controller;
 
 import java.io.IOException;
 
-import server.network.Server;
-import server.network.event.ChangeEvent;
-import server.network.event.ServerListener;
-import server.view.ServerFrame;
+import network.server.Server;
+import network.server.event.ChangeEvent;
+import network.server.event.ServerListener;
+
+import view.server.ServerFrame;
 
 /**
  * ServerChat gère la logique métier du chat côté serveur

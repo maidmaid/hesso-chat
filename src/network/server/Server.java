@@ -1,4 +1,4 @@
-package server.network;
+package network.server;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -7,10 +7,11 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
-import client.network.Client;
+import network.client.Client;
+
 
 /**
- * Server gère la communication réseau avec des clients
+ * Server manages the network's communication with clients
  * @author DM
  */
 public class Server extends ServerAbstract
@@ -21,7 +22,7 @@ public class Server extends ServerAbstract
 	private Thread trdConnection;
 	
 	/**
-	 * Constuit le serveur de chat
+	 * Builds server's chat
 	 */
 	public Server()
 	{
@@ -74,7 +75,8 @@ public class Server extends ServerAbstract
 	    		while(true)
 	    		{
 					Socket socket = server.accept();
-					sockets.add(socket);
+					//sockets.add(socket);
+					System.out.println("Nouveau client");
 	    		}
 			}
 	    	catch (IOException e)

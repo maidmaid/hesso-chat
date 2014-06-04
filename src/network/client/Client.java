@@ -1,4 +1,4 @@
-package client.network;
+package network.client;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,20 +8,19 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Scanner;
 
-import client.ui.ClientMessage;
+import view.client.ClientMessagePanel;
+
 
 public class Client extends ClientAbstract
 {
-	private ClientMessage clientMessage;
+	private ClientMessagePanel clientMessage;
 	Socket socket;
 	Thread threadRead;
 	BufferedReader in;
 	PrintWriter out;
 
-	public Client(ClientMessage clientMessage)
+	public Client()
 	{
-		this.clientMessage = new ClientMessage();
-		
 		try
 		{
 			socket = new Socket(/*InetAddress.getLocalHost()*/"127.0.0.1",1234);

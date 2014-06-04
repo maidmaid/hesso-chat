@@ -1,7 +1,7 @@
-package server;
+package main;
 
-import server.controller.ServerController;
-import server.view.ServerFrame;
+import controller.ServerController;
+import view.server.ServerFrame;
 
 /**
  * MainServer exécute le serveur de chat

@@ -1,4 +1,4 @@
-package server.view;
+package view.server;
 
 import java.util.logging.Logger;
 
@@ -6,11 +6,14 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import server.controller.ServerController;
-import server.log.ServerLogger;
-import server.network.Server;
-import server.network.event.ChangeEvent;
-import server.network.event.ServerListener;
+import network.server.Server;
+import network.server.event.ChangeEvent;
+import network.server.event.ServerListener;
+
+import log.ServerLogger;
+
+import controller.ServerController;
+
 
 /**
  * ServerApp est l'application chat côté serveur

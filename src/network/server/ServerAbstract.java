@@ -1,9 +1,10 @@
-package server.network;
+package network.server;
 
 import java.util.ArrayList;
 
-import server.network.event.ChangeEvent;
-import server.network.event.ServerListener;
+import network.server.event.ChangeEvent;
+import network.server.event.ServerListener;
+
 
 /**
  * Server abstact

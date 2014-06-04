@@ -1,4 +1,4 @@
-package server.log;
+package log;
 
 import java.util.logging.Handler;
 import java.util.logging.LogRecord;

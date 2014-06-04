@@ -1,4 +1,6 @@
-package client.network;
+package network.client;
+
+import controller.ServerController;
 
 public abstract class ClientAbstract {
 
@@ -7,11 +9,15 @@ public abstract class ClientAbstract {
 	private int id;
 	private boolean registred;
 	
-	public ClientAbstract(){
-		this.setFirstName(firstName);
-		this.setLastName(lastName);
-		this.setId(id);
-		this.setRegistred(registred);
+	public ClientAbstract()
+	{
+		
+	}
+
+	public ClientAbstract(String firstName, String lastName, int id)
+	{
+		this.firstName = firstName;
+		this.lastName = lastName;
 	}
 
 	public String getFirstName() {

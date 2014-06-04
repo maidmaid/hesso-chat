@@ -1,4 +1,4 @@
-package client.ui;
+package view.client;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -13,9 +13,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import client.network.Client;
+import network.client.Client;
 
-public class ClientMessage extends JPanel
+
+public class ClientMessagePanel extends JPanel
 							implements ActionListener
 {
 	private String frameName = "Message Client";
@@ -32,7 +33,7 @@ public class ClientMessage extends JPanel
 	
 	private Client client;
 	
-	public ClientMessage(){
+	public ClientMessagePanel(){
 		
 		readMessage = new JTextField();
 		Font police = new Font("Ds-digital", Font.TYPE1_FONT,20);

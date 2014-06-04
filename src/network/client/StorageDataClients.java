@@ -1,4 +1,4 @@
-package client.network;
+package network.client;
 
 import java.util.Hashtable;
 

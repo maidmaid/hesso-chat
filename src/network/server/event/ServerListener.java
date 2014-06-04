@@ -1,4 +1,4 @@
-package server.network.event;
+package network.server.event;
 
 /**
  * The listener interface for receiving change events.
