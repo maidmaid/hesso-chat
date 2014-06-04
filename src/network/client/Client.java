@@ -14,7 +14,7 @@ import view.client.ClientConnexionPanel;
 import view.client.ClientMessagePanel;
 
 
-public class Client extends ClientAbstract
+public class Client extends AbstractClient
 {
 	Socket socket;
 	Thread threadRead;
@@ -43,6 +43,7 @@ public class Client extends ClientAbstract
 				while(true)
 				{
 					String message = in.readLine();
+					fireMessageReceived(message);
 				}
 			}
 			catch(IOException e)
