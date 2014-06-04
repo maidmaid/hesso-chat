@@ -1,7 +1,8 @@
 package main;
 
+import model.ServerModel;
 import controller.ServerController;
-import view.server.ServerFrame;
+import view.server.ServerView;
 
 /**
  * MainServer exécute le serveur de chat
@@ -15,6 +16,7 @@ public class MainServer
 	 */
 	public static void main(String[] args)
 	{
-		new ServerController();
+		ServerModel model = new ServerModel();
+		ServerController controller = new ServerController(model);
 	}
 }
