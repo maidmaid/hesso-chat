@@ -19,16 +19,20 @@ import controller.ServerController;
  * ServerApp est l'application chat côté serveur
  * @author DM
  */
-public class ServerFrame extends JFrame implements ServerListener
+public class ServerView extends JFrame implements ServerListener
 {
+	private ServerController controller;
 	private Logger logger;
 	private JTextArea areaLog;
 	
 	/**
 	 * Construit l'application chat côté serveur
+	 * @param serverController 
 	 */
-	public ServerFrame()
+	public ServerView(ServerController controller)
 	{	
+		this.controller = controller;
+		
 		// Paramètre la zone d'affichage des logs
 		areaLog = new JTextArea();
 		JScrollPane scrollPane = new JScrollPane(areaLog); 

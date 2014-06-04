@@ -2,11 +2,12 @@ package controller;
 
 import java.io.IOException;
 
+import model.ClientModel;
+import model.ServerModel;
 import network.server.Server;
 import network.server.event.ChangeEvent;
 import network.server.event.ServerListener;
-
-import view.server.ServerFrame;
+import view.server.ServerView;
 
 /**
  * ServerChat gère la logique métier du chat côté serveur
@@ -14,18 +15,24 @@ import view.server.ServerFrame;
  */
 public class ServerController
 {
-	private Server server;
-	private ServerFrame app;
+	private ServerModel model;
+	private ServerView view;
 	
 	/**
 	 * Construit le chat du serveur
+	 * @param model 
 	 */
-	public ServerController()
+	public ServerController(ServerModel model)
 	{
-		server = new Server();
-		app = new ServerFrame();
+		this.model = model;
+		view = new ServerView(this);
 		
-		server.addServerListener(app);
-		server.start();
+		model.getServer().addServerListener(view);
+		model.getServer().start();
+	}
+	
+	public ServerModel getModel()
+	{
+		return model;
 	}
 }
