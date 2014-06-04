@@ -1,6 +1,8 @@
-package network.client;
+package archives;
 
 import java.util.Hashtable;
+
+import network.client.Client;
 
 public class StorageDataClients 
 {

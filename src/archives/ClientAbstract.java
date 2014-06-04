@@ -1,4 +1,4 @@
-package network.client;
+package archives;
 
 import controller.ServerController;
 

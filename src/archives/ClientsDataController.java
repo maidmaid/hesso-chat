@@ -1,4 +1,6 @@
-package network.client;
+package archives;
+
+import network.client.Client;
 
 public class ClientsDataController
 {
