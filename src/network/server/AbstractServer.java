@@ -3,6 +3,7 @@ package network.server;
 import java.util.ArrayList;
 
 import network.server.event.ChangeEvent;
+import network.server.event.ClientEvent;
 import network.server.event.ServerListener;
 
 
@@ -10,7 +11,7 @@ import network.server.event.ServerListener;
  * Server abstact
  * @author DM
  */
-public abstract class ServerAbstract
+public abstract class AbstractServer
 {
 	protected ArrayList<ServerListener> listeners;
 	private State state;
@@ -26,7 +27,7 @@ public abstract class ServerAbstract
 	/**
 	 * Constructs an ServerAbstract object
 	 */
-	public ServerAbstract()
+	public AbstractServer()
 	{
 		listeners = new ArrayList<ServerListener>();
 		setState(State.DISABLE);
@@ -98,5 +99,17 @@ public abstract class ServerAbstract
 	public String getStateMessage()
 	{
 		return stateMessage;
+	}
+	
+	/**
+	 * Notifies all listeners that client connected
+	 */
+	public void fireClientConnected()
+	{
+		for (ServerListener l : listeners)
+		{
+			ClientEvent e = new ClientEvent(this);
+			l.clientConnected(e);
+		}
 	}
 }

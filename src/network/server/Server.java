@@ -14,7 +14,7 @@ import network.client.Client;
  * Server manages the network's communication with clients
  * @author DM
  */
-public class Server extends ServerAbstract
+public class Server extends AbstractServer
 {
 	private ArrayList<Client> clients;
 	private ArrayList<Socket> sockets;
@@ -76,7 +76,7 @@ public class Server extends ServerAbstract
 	    		{
 					Socket socket = server.accept();
 					//sockets.add(socket);
-					System.out.println("Nouveau client");
+					fireClientConnected();
 	    		}
 			}
 	    	catch (IOException e)

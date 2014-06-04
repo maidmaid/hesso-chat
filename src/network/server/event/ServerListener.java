@@ -10,4 +10,9 @@ public interface ServerListener
 	 * Invoked when an change state occurs.
 	 */
 	void stateChanged(ChangeEvent e);
+	
+	/**
+	 * Invoked when an connection client occurs.
+	 */
+	void clientConnected(ClientEvent e);
 }
