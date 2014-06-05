@@ -17,11 +17,13 @@ public class ClientController extends AbstractController
 		getModel().getClient().addClientListener(view);
 		getModel().getClient().addClientListener(view.getConnexionPanel());
 		getModel().getClient().addClientListener(view.getMessagePanel());
+		getModel().getClient().addClientListener(view.getUsersPanel());
 		
 		// Views are listeners of MessageDecoder
 		getModel().getMessageDecoder().addMessageListener(view);
 		getModel().getMessageDecoder().addMessageListener(view.getConnexionPanel());
 		getModel().getMessageDecoder().addMessageListener(view.getMessagePanel());
+		getModel().getMessageDecoder().addMessageListener(view.getUsersPanel());
 	}
 	
 	@Override

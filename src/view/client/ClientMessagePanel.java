@@ -15,13 +15,14 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import network.client.event.MessageEvent;
+import network.message.MessageIdAssigned;
+import network.message.MessageUserChanged;
 import controller.AbstractController;
 
 
 public class ClientMessagePanel extends AbstractClientView implements ActionListener
 {
 	private JPanel pnlContainer;
-	private String frameName = "Message Client";
 	private String message;
 	private String readText;
 	private JTextArea areInputMessage;
@@ -125,6 +126,18 @@ public class ClientMessagePanel extends AbstractClientView implements ActionList
 
 	@Override
 	public void connexionEstablished() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void idAssigned(MessageIdAssigned message) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void userChanged(MessageUserChanged message) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -2,7 +2,13 @@ package view.client;
 
 import javax.swing.JFrame;
 
+import user.User;
+import view.client.table.UsersTable;
+
+import network.client.event.ClientListener;
 import network.client.event.MessageEvent;
+import network.message.MessageIdAssigned;
+import network.message.MessageUserChanged;
 import controller.AbstractController;
 
 public class ClientView extends AbstractClientView
@@ -10,6 +16,7 @@ public class ClientView extends AbstractClientView
 	private JFrame frame;
 	private ClientConnexionPanel pnlConnexion;
 	private ClientMessagePanel pnlMessage;
+	private UsersTable pnlUsers;
 
 	/**
 	 *CHOICE ELEMENT'S PREFIXING :
@@ -27,10 +34,13 @@ public class ClientView extends AbstractClientView
 		
 		frame = new JFrame();
 		
+		
 		pnlConnexion = new ClientConnexionPanel(controller);
 		pnlMessage = new ClientMessagePanel(controller);
-		frame.setContentPane(pnlConnexion.getContainer());
+		pnlUsers = new UsersTable(controller);
+		//frame.setContentPane(pnlConnexion.getContainer());
 		//frame.setContentPane(messagePanel.getContainer());
+		frame.setContentPane(pnlUsers.getContainer());
 		
 		frame.setTitle("Client Application");
 		frame.setSize(400, 600);
@@ -50,6 +60,11 @@ public class ClientView extends AbstractClientView
 		return pnlMessage;
 	}
 
+	public UsersTable getUsersPanel()
+	{
+		return pnlUsers;
+	}
+	
 	@Override
 	public void messageReceived(MessageEvent e)
 	{
@@ -61,4 +76,17 @@ public class ClientView extends AbstractClientView
 	{
 		frame.setContentPane(pnlMessage.getContainer());
 	}
+
+	@Override
+	public void idAssigned(MessageIdAssigned message)
+	{
+		
+	}
+
+	@Override
+	public void userChanged(MessageUserChanged message) {
+		// TODO Auto-generated method stub
+		User u = message.getUser();
+	}
+
 }
