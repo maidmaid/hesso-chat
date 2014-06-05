@@ -1,30 +1,34 @@
 package view.client.table;
 
+import java.util.ArrayList;
+
 import javax.swing.table.AbstractTableModel;
 
 import user.User;
+import user.UserManager;
 
 public class UsersModelTable extends AbstractTableModel
 {
 	private String[] headers = {"ID", "Username"};
-	private User[] users;
+	private UserManager users;
 
 	public UsersModelTable ()
 	{
 		super();
-
-		users = new User[]{
-				new User(),
-				new User()
-		};
+		this.users = new UserManager();
 	}
 
 	public int getRowCount() {
-		return users.length;
+		return users.size();
 	}
 
 	public int getColumnCount() {
 		return headers.length;
+	}
+	
+	public UserManager getUserManager()
+	{
+		return users;
 	}
 
 	@Override
@@ -39,9 +43,9 @@ public class UsersModelTable extends AbstractTableModel
 		switch(columnIndex)
 		{
 		case 0:
-			return users[rowIndex].getId();
+			return users.get(rowIndex).getId();
 		case 1:
-			return users[rowIndex].getUsername();
+			return users.get(rowIndex).getUsername();
 		default:    
 			return null;
 		}

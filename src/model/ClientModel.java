@@ -42,6 +42,11 @@ public class ClientModel extends AbstractModel
 		return decoder;
 	}
 	
+	public UserManager getUserManager()
+	{
+		return users;
+	}
+	
 	private class ClientModelListener implements ClientListener
 	{
 		@Override

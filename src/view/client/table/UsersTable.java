@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import user.User;
+import user.UserManager;
 import view.client.AbstractClientView;
 import view.client.ClientView;
 
@@ -96,17 +97,22 @@ public class UsersTable extends AbstractClientView
 	public void userChanged(MessageUserChanged message)
 	{
 		User user = message.getUser();
+		UsersModelTable model = (UsersModelTable) tblUsers.getModel();
+		model.getUserManager().updateUser(user);
+		model.fireTableDataChanged();
 	}
 
 	@Override
-	public void disconnectionOccured(DisconnectionEvent e) {
-		// TODO Auto-generated method stub
+	public void disconnectionOccured(DisconnectionEvent e)
+	{
 		
 	}
 
 	@Override
-	public void userDisconnected(MessageUserDisconnected message) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void userDisconnected(MessageUserDisconnected message)
+	{
+		User user = message.getUser();
+		UsersModelTable model = (UsersModelTable) tblUsers.getModel();
+		model.getUserManager().updateUser(user);
+		model.fireTableDataChanged();	}
 }

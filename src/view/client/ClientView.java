@@ -38,9 +38,9 @@ public class ClientView extends AbstractClientView
 		pnlConnexion = new ClientConnexionPanel(controller);
 		pnlMessage = new ClientMessagePanel(controller);
 		pnlUsers = new UsersTable(controller);
-		//frame.setContentPane(pnlConnexion.getContainer());
+		frame.setContentPane(pnlConnexion.getContainer());
 		//frame.setContentPane(messagePanel.getContainer());
-		frame.setContentPane(pnlUsers.getContainer());
+		//frame.setContentPane(pnlUsers.getContainer());
 		
 		frame.setTitle("Client Application");
 		frame.setSize(400, 600);
@@ -74,7 +74,7 @@ public class ClientView extends AbstractClientView
 	@Override
 	public void connexionEstablished()
 	{
-		frame.setContentPane(pnlMessage.getContainer());
+		frame.setContentPane(pnlUsers.getContainer());
 	}
 
 	@Override
