@@ -22,7 +22,7 @@ public class Client extends AbstractClient
 
 	public Client(Socket socket)
 	{
-		this.setSocket(socket);
+		this.socket = socket;
 		init();
 		
 		try
@@ -42,8 +42,8 @@ public class Client extends AbstractClient
 	
 	private void initSocket() throws IOException
 	{
-		out = new PrintWriter(getSocket().getOutputStream());
-		in = new BufferedReader(new InputStreamReader(getSocket().getInputStream()));
+		out = new PrintWriter(socket.getOutputStream());
+		in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 		threadRead.start();
 	}
 
@@ -77,17 +77,9 @@ public class Client extends AbstractClient
 	{
 		threadRead.interrupt();
 		
-		setSocket(new Socket(ip, 1234));
+		socket = new Socket(ip, 1234);
 		
-		fireConnexionEstablished();
 		initSocket();
-	}
-
-	private Socket getSocket() {
-		return socket;
-	}
-
-	private void setSocket(Socket socket) {
-		this.socket = socket;
+		fireConnexionEstablished();
 	}
 }
