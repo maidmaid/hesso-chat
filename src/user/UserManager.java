@@ -35,7 +35,7 @@ public class UserManager extends ArrayList<User>
 		
 		if(u == null)
 		{
-			add(u);
+			add(user);
 		}
 		else
 		{

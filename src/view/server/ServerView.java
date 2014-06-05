@@ -90,6 +90,7 @@ public class ServerView extends AbstractServerView
 	@Override
 	public void userChanged(MessageUserChanged message)
 	{
-		logger.info(message.getUser().getUsername() + " a modifié ses informations utilisateur.");
+		User user = message.getUser();
+		logger.info(user.getUsername() + " (" + user.getId() + ") a modifié ses informations utilisateur.");
 	}
 }
