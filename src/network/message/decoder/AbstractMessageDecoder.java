@@ -3,6 +3,7 @@ package network.message.decoder;
 import java.util.ArrayList;
 
 import network.message.MessageIdAssigned;
+import network.message.MessageUserChanged;
 import network.message.event.MessageListener;
 
 public class AbstractMessageDecoder
@@ -34,6 +35,14 @@ public class AbstractMessageDecoder
 		for(MessageListener l : listeners)
 		{
 			l.idAssigned(message);
+		}
+	}
+	
+	public void fireUserChanged(MessageUserChanged message)
+	{
+		for(MessageListener l : listeners)
+		{
+			l.userChanged(message);
 		}
 	}
 }

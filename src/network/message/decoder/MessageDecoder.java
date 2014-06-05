@@ -8,6 +8,7 @@ import javax.xml.bind.DatatypeConverter;
 
 import network.message.MessageIdAssigned;
 import network.message.MessageInterface;
+import network.message.MessageUserChanged;
 
 public class MessageDecoder extends AbstractMessageDecoder
 {	
@@ -35,6 +36,10 @@ public class MessageDecoder extends AbstractMessageDecoder
 		if(message.getClass() == MessageIdAssigned.class)
 		{
 			fireIdAssigned((MessageIdAssigned) message);
+		}
+		else if(message.getClass() == MessageUserChanged.class)
+		{
+			fireUserChanged((MessageUserChanged) message);
 		}
 	}
 }

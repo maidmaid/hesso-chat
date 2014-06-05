@@ -17,7 +17,10 @@ public class ServerController extends AbstractController
 		super(model);
 		
 		view = new ServerView(this);
+		
 		getModel().getServer().addServerListener(view);
+		getModel().getMessageDecoder().addMessageListener(view);
+		
 		getModel().getServer().start();
 	}
 	

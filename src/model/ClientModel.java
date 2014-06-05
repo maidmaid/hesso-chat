@@ -6,6 +6,7 @@ import network.client.Client;
 import network.client.event.ClientListener;
 import network.client.event.MessageEvent;
 import network.message.MessageIdAssigned;
+import network.message.MessageUserChanged;
 import network.message.decoder.MessageDecoder;
 import network.message.event.MessageListener;
 
@@ -59,7 +60,17 @@ public class ClientModel extends AbstractModel
 		@Override
 		public void idAssigned(MessageIdAssigned message)
 		{
-			users.getMe().setId(message.getId());
+			User me = users.getMe();
+			me.setId(message.getId());
+			
+			MessageUserChanged messageUserChanged = new MessageUserChanged(me);
+			client.send(messageUserChanged.serialize());
+		}
+
+		@Override
+		public void userChanged(MessageUserChanged message)
+		{
+			users.updateUser(message.getUser());
 		}
 	}
 }

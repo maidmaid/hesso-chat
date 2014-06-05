@@ -1,8 +1,18 @@
 package user;
 
-public class User
+import java.io.Serializable;
+
+public class User implements Serializable
 {
+	private static final long serialVersionUID = 1L;
 	private int id;
+	private String username;
+	
+	public User()
+	{
+		setId(-1);
+		setUsername("Kok");
+	}
 	
 	public void setId(int id)
 	{
@@ -12,5 +22,15 @@ public class User
 	public int getId()
 	{
 		return id;
+	}
+	
+	public void setUsername(String username)
+	{
+		this.username = username;
+	}
+	
+	public String getUsername()
+	{
+		return username;
 	}
 }
