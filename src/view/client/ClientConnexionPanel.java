@@ -22,77 +22,83 @@ import view.AbstractView;
 import controller.AbstractController;
 import controller.ClientController;
 
-
-
 public class ClientConnexionPanel extends AbstractClientView implements ActionListener
 {
-	private JPanel container;
-	private JTextField ipText;
-	private JLabel ipLabel;
-	private JPanel ipTextPan;
+	private JPanel pnlContainer;
+	private JTextField txtIp;
+	private JLabel lblIp;
+	private JPanel pnlIp;
 	private JButton btEnter;
 	private String ipAdress;
 	private String frameName = "Connection Client";
 	private String errorMessage;
-	private JTextArea errorText;
-	private JPanel errorTextPan;
-	private JLabel errorLabel;
+	private JTextArea areError;
+	private JPanel pnlError;
+	private JLabel lblError;
 
+	/**
+	 *CHOICE ELEMENT'S PREFIXING :
+	 * 
+	 * JPanel		:	pnl
+	 * JTextField	:	fld
+	 * JLabel		:	lbl
+	 * JButton 		:	btn
+	 * JTextArea	:	are
+	 * */
+	
 	public ClientConnexionPanel(AbstractController controller)
 	{
 		super(controller);
 
-		container = new JPanel();
+		pnlContainer = new JPanel();
 
 		// Initialization of the ip's JLabel
-		errorLabel = new JLabel("Error Message");
-		errorLabel.setVisible(false);
-		container.add(this.errorLabel, BorderLayout.NORTH);
+		lblError = new JLabel("Error Message");
 
 		//Initialization of the errorText
-		errorText = new JTextArea(" ");
+		areError = new JTextArea(" ");
 		Font policeError = new Font("Ds-digital", Font.TYPE1_FONT,15);
-		errorText.setFont(policeError);
-		errorText.setForeground(Color.red);
-		container.add(new JScrollPane(errorText));
+		areError.setFont(policeError);
+		areError.setForeground(Color.red);
+		pnlContainer.add(new JScrollPane(areError));
 		
-		errorText.setEditable(false);
-		errorText.setSize(280, 50);
-		errorText.setVisible(false);
+		areError.setEditable(false);
+		areError.setSize(280, 50);
 	
-		errorTextPan = new JPanel();
-		errorTextPan.setPreferredSize(new Dimension (360,80));
-		errorTextPan.setBackground(Color.white);
+		pnlError = new JPanel();
+		pnlError.setPreferredSize(new Dimension (360,80));
+		pnlError.setBackground(Color.white);
 
-		errorTextPan.add(errorText);
-		errorTextPan.setBorder(BorderFactory.createLineBorder(Color.darkGray));
-		errorTextPan.setVisible(false);
-		container.add(errorTextPan, BorderLayout.CENTER);
+		pnlError.add(lblError);
+		pnlError.add(areError);
+		pnlError.setBorder(BorderFactory.createLineBorder(Color.darkGray));
+		pnlError.setVisible(false);
+		pnlContainer.add(pnlError, BorderLayout.CENTER);
 		
 		// Initialization of the ip's JLabel
-		ipLabel = new JLabel("Type your IP Address");
-		container.add(this.ipLabel, BorderLayout.NORTH);
+		lblIp = new JLabel("Type your IP Address");
+		pnlContainer.add(this.lblIp, BorderLayout.NORTH);
 		
 		//Initialization of the JTextField ipText
-		ipText = new JTextField(15);
+		txtIp = new JTextField(15);
 		Font police = new Font("Ds-digital", Font.TYPE1_FONT,20);
-		ipText.setFont(police);
-		ipText.setHorizontalAlignment(JTextField.CENTER);
-		ipText.setPreferredSize(new Dimension(280,30));
-		ipText.setMargin(null);           
-		ipText.setBorder(BorderFactory.createEmptyBorder());
+		txtIp.setFont(police);
+		txtIp.setHorizontalAlignment(JTextField.CENTER);
+		txtIp.setPreferredSize(new Dimension(280,30));
+		txtIp.setMargin(null);           
+		txtIp.setBorder(BorderFactory.createEmptyBorder());
 
 		//Initialization of the ipText's panel
-		ipTextPan = new JPanel();
-		ipTextPan.setPreferredSize(new Dimension(360,50));
-		ipTextPan.setBackground(Color.white);
-		ipTextPan.add(ipText);
-		ipTextPan.setBorder(BorderFactory.createLineBorder(Color.darkGray));
-		container.add(ipTextPan, BorderLayout.CENTER);
+		pnlIp = new JPanel();
+		pnlIp.setPreferredSize(new Dimension(360,50));
+		pnlIp.setBackground(Color.white);
+		pnlIp.add(txtIp);
+		pnlIp.setBorder(BorderFactory.createLineBorder(Color.darkGray));
+		pnlContainer.add(pnlIp, BorderLayout.CENTER);
 
 		//Initialization of the Enter button
 		btEnter = new JButton("Enter");
-		container.add(btEnter, BorderLayout.SOUTH);
+		pnlContainer.add(btEnter, BorderLayout.SOUTH);
 		btEnter.setPreferredSize(new Dimension(360,60));
 		btEnter.addActionListener(this);
 	}	
@@ -102,10 +108,10 @@ public class ClientConnexionPanel extends AbstractClientView implements ActionLi
 	{
 		if(e.getSource() == btEnter)
 		{
-			errorTextPan.setVisible(false);
+			pnlError.setVisible(false);
 			
 			//setIpAdress(ipText.getText());
-			ipAdress = ipText.getText();
+			ipAdress = txtIp.getText();
 			try
 			{
 				//controller.getModel().getClient().connect(ipAdress);
@@ -113,19 +119,11 @@ public class ClientConnexionPanel extends AbstractClientView implements ActionLi
 			} catch (IOException exception) {
 				errorMessage = ("ERREUR " + exception.getMessage());
 				System.out.println(errorMessage);
-				errorText.setText(exception.getMessage());
-				errorText.revalidate();
-				componentVisibleTrue(errorTextPan, errorLabel, errorText);
-				
+				areError.setText(exception.getMessage());
+				areError.revalidate();
+				pnlError.setVisible(true);
 			}
 		}
-	}
-	
-	public void componentVisibleTrue(JPanel panel, JLabel label, JTextArea area)
-	{
-		panel.setVisible(true);
-		label.setVisible(true);
-		area.setVisible(true);
 	}
 
 	public String getIpAdress() {
@@ -134,7 +132,7 @@ public class ClientConnexionPanel extends AbstractClientView implements ActionLi
 
 	public JPanel getContainer()
 	{
-		return container;
+		return pnlContainer;
 	}
 	
 	@Override

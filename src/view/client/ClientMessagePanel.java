@@ -21,96 +21,112 @@ import controller.AbstractController;
 
 public class ClientMessagePanel extends AbstractClientView implements ActionListener
 {
-	private JPanel container;
+	private JPanel pnlContainer;
 	private String frameName = "Message Client";
 	private String message;
 	private String readText;
-	private JTextArea inputMessage;
-	private JTextArea readMessage;
-	private JPanel inputMessagePan;
-	private JPanel readMessagePan;
-	private JLabel readMessageLablel;
-	private JLabel inputMessageLablel;
-	private JButton btEnterMessage;
+	private JTextArea areInputMessage;
+	private JTextArea areReadMessage;
+	private JPanel pnlInputMessage;
+	private JPanel pnlReadMessage;
+	private JLabel lblReadMessage;
+	private JLabel lblInputMessage;
+	private JButton btnEnterMessage;
+	
+	/**
+	 *CHOICE ELEMENT'S PREFIXING :
+	 * 
+	 * JPanel		:	pnl
+	 * JTextField	:	fld
+	 * JLabel		:	lbl
+	 * JButton 		:	btn
+	 * JTextArea	:	are
+	 * */
 	
 	public ClientMessagePanel(AbstractController controller)
 	{	
 		super(controller);
 		
-		container = new JPanel();
+		pnlContainer = new JPanel();
 		
-		readMessageLablel = new JLabel("Message received : ");
-		readMessageLablel.setVisible(true);
-		container.add(this.readMessageLablel, BorderLayout.NORTH);
+		lblReadMessage = new JLabel("Message received : ");
+		lblReadMessage.setVisible(true);
+		pnlContainer.add(this.lblReadMessage, BorderLayout.NORTH);
 		
-		readMessage = new JTextArea();
+		areReadMessage = new JTextArea();
 		Font police = new Font("Ds-digital", Font.TYPE1_FONT,20);
-		readMessage.setFont(police);
-		readMessage.setBackground(Color.gray);
-		readMessage.setPreferredSize(new Dimension(280,150));
-		readMessage.setMargin(null);           
-		readMessage.setBorder(BorderFactory.createEmptyBorder());
+		areReadMessage.setFont(police);
+		areReadMessage.setBackground(Color.gray);
+		areReadMessage.setPreferredSize(new Dimension(280,150));
+		areReadMessage.setMargin(null);           
+		areReadMessage.setBorder(BorderFactory.createEmptyBorder());
 		//readMessage.setEditable(false);
-		container.add(new JScrollPane(readMessage));
+		pnlContainer.add(new JScrollPane(areReadMessage));
 		
-		readMessagePan = new JPanel();
-		readMessagePan.setPreferredSize(new Dimension(360,200));
-		readMessagePan.setBackground(Color.gray);
+		pnlReadMessage = new JPanel();
+		pnlReadMessage.setPreferredSize(new Dimension(360,200));
+		pnlReadMessage.setBackground(Color.gray);
 		
-		readMessagePan.add(readMessage);
-		readMessagePan.setBorder(BorderFactory.createLineBorder(Color.darkGray));
-		container.add(readMessagePan, BorderLayout.CENTER);
+		pnlReadMessage.add(areReadMessage);
+		pnlReadMessage.setBorder(BorderFactory.createLineBorder(Color.darkGray));
+		pnlContainer.add(pnlReadMessage, BorderLayout.CENTER);
 		
-		inputMessageLablel = new JLabel("Send a Message : ");
-		inputMessageLablel.setVisible(true);
-		container.add(this.inputMessageLablel, BorderLayout.NORTH);
+		lblInputMessage = new JLabel("Send a Message : ");
+		lblInputMessage.setVisible(true);
+		pnlContainer.add(this.lblInputMessage, BorderLayout.NORTH);
 		
-		inputMessage = new JTextArea(" ");
+		areInputMessage = new JTextArea(" ");
 		police = new Font("Ds-digital", Font.TYPE1_FONT,20);
-		inputMessage.setFont(police);
-		inputMessage.setEditable(true);
-		inputMessage.setBackground(Color.white);
-		inputMessage.setPreferredSize(new Dimension(280,150));
-		inputMessage.setMargin(null);           
-		inputMessage.setBorder(BorderFactory.createEmptyBorder());
-		container.add(new JScrollPane(inputMessage));
+		areInputMessage.setFont(police);
+		areInputMessage.setEditable(true);
+		areInputMessage.setBackground(Color.white);
+		areInputMessage.setPreferredSize(new Dimension(280,150));
+		areInputMessage.setMargin(null);           
+		areInputMessage.setBorder(BorderFactory.createEmptyBorder());
+		pnlContainer.add(new JScrollPane(areInputMessage));
 		
-		inputMessagePan = new JPanel();
-		inputMessagePan.setPreferredSize(new Dimension(360,200));
-		inputMessagePan.setBackground(Color.white);
+		pnlInputMessage = new JPanel();
+		pnlInputMessage.setPreferredSize(new Dimension(360,200));
+		pnlInputMessage.setBackground(Color.white);
 		
-		inputMessagePan.add(inputMessage);
-		inputMessagePan.setBorder(BorderFactory.createLineBorder(Color.darkGray));
-		container.add(inputMessagePan, BorderLayout.CENTER);
+		pnlInputMessage.add(areInputMessage);
+		pnlInputMessage.setBorder(BorderFactory.createLineBorder(Color.darkGray));
+		pnlContainer.add(pnlInputMessage, BorderLayout.CENTER);
 		
-		btEnterMessage = new JButton("Send Message");
-		container.add(btEnterMessage, BorderLayout.CENTER);
-		btEnterMessage.setPreferredSize(new Dimension(360, 60));
-		btEnterMessage.addActionListener(this);
+		btnEnterMessage = new JButton("Send Message");
+		pnlContainer.add(btnEnterMessage, BorderLayout.CENTER);
+		btnEnterMessage.setPreferredSize(new Dimension(360, 60));
+		btnEnterMessage.addActionListener(this);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
-		if(e.getSource() == btEnterMessage)
+		if(e.getSource() == btnEnterMessage)
 		{
-			message = inputMessage.getText();
+			message = areInputMessage.getText();
 		}
 	}
 	
 	public void readMessage()
 	{
-		readMessage.setText(message);
+		areReadMessage.setText(message);
 	}
 	
 	public JPanel getContainer()
 	{
-		return container;
+		return pnlContainer;
 	}
 
 	@Override
 	public void messageReceived(MessageEvent e)
 	{
+		
+	}
+
+	@Override
+	public void connexionEstablished() {
+		// TODO Auto-generated method stub
 		
 	}
 }

@@ -11,9 +11,18 @@ import controller.AbstractController;
 public class ClientView extends AbstractClientView
 {
 	private JFrame frame;
-	private ClientConnexionPanel connexionPanel;
-	private ClientMessagePanel messagePanel;
+	private ClientConnexionPanel pnlConnexion;
+	private ClientMessagePanel pnlMessage;
 
+	/**
+	 *CHOICE ELEMENT'S PREFIXING :
+	 * 
+	 * JPanel		:	pnl
+	 * JTextField	:	fld
+	 * JLabel		:	lbl
+	 * JButton 		:	btn
+	 * JTextArea	:	are
+	 * */
 	
 	public ClientView(AbstractController controller)
 	{
@@ -21,9 +30,9 @@ public class ClientView extends AbstractClientView
 		
 		frame = new JFrame();
 		
-		connexionPanel = new ClientConnexionPanel(controller);
-		messagePanel = new ClientMessagePanel(controller);
-		frame.setContentPane(connexionPanel.getContainer());
+		pnlConnexion = new ClientConnexionPanel(controller);
+		pnlMessage = new ClientMessagePanel(controller);
+		frame.setContentPane(pnlConnexion.getContainer());
 		//frame.setContentPane(messagePanel.getContainer());
 		
 		frame.setTitle("Client Application");
@@ -36,12 +45,12 @@ public class ClientView extends AbstractClientView
 	
 	public ClientConnexionPanel getConnexionPanel()
 	{
-		return connexionPanel;
+		return pnlConnexion;
 	}
 	
 	public ClientMessagePanel getMessagePanel()
 	{
-		return messagePanel;
+		return pnlMessage;
 	}
 
 	@Override
@@ -53,6 +62,6 @@ public class ClientView extends AbstractClientView
 	@Override
 	public void connexionEstablished()
 	{
-		frame.setContentPane(messagePanel.getContainer());
+		frame.setContentPane(pnlMessage.getContainer());
 	}
 }
