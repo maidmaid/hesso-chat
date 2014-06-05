@@ -115,11 +115,17 @@ public class ClientConnexionPanel extends AbstractClientView implements ActionLi
 				System.out.println(errorMessage);
 				errorText.setText(exception.getMessage());
 				errorText.revalidate();
-				errorTextPan.setVisible(true);
-				errorLabel.setVisible(true);
-				errorText.setVisible(true);
+				componentVisibleTrue(errorTextPan, errorLabel, errorText);
+				
 			}
 		}
+	}
+	
+	public void componentVisibleTrue(JPanel panel, JLabel label, JTextArea area)
+	{
+		panel.setVisible(true);
+		label.setVisible(true);
+		area.setVisible(true);
 	}
 
 	public String getIpAdress() {
@@ -130,10 +136,16 @@ public class ClientConnexionPanel extends AbstractClientView implements ActionLi
 	{
 		return container;
 	}
-
+	
 	@Override
 	public void messageReceived(MessageEvent e)
 	{
+		
+	}
+
+	@Override
+	public void connexionEstablished() {
+		// TODO Auto-generated method stub
 		
 	}
 }
