@@ -1,24 +1,23 @@
 package view.client.table;
 
-import java.util.ArrayList;
-
 import javax.swing.table.AbstractTableModel;
 
-import user.User;
 import user.UserManager;
 
 public class UsersModelTable extends AbstractTableModel
 {
 	private String[] headers = {"ID", "Username"};
-	private UserManager users;
+	public UserManager users;
 
-	public UsersModelTable ()
+	public UsersModelTable()
 	{
 		super();
 		this.users = new UserManager();
 	}
 
-	public int getRowCount() {
+	@Override
+	public int getRowCount()
+	{
 		return users.size();
 	}
 

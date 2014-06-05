@@ -88,6 +88,7 @@ public class ServerModel extends AbstractModel
 		{
 			public void messageReceived(MessageEvent e)
 			{
+				server.broadcast(e.getMessage());
 				decoder.decode(e.getMessage());
 			}
 
@@ -100,7 +101,7 @@ public class ServerModel extends AbstractModel
 			public void disconnectionOccured(DisconnectionEvent e)
 			{
 				Client client = (Client) e.getSource();
-				User user = users.getUser(client);
+				User user = users.get(client);
 				
 				MessageUserDisconnected message = new MessageUserDisconnected(user);
 				decoder.fireUserDisconnected(message);
@@ -128,6 +129,8 @@ public class ServerModel extends AbstractModel
 		{
 			User user = message.getUser();
 			users.unlink(user);
+			users.remove(user);
+			System.out.println("déco");
 		}
 	}
 }

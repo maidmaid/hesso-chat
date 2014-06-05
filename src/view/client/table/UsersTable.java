@@ -1,8 +1,10 @@
 package view.client.table;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.util.Hashtable;
 
@@ -10,17 +12,16 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+
 import user.User;
 import user.UserManager;
 import view.client.AbstractClientView;
 import view.client.ClientView;
-
 import network.client.event.DisconnectionEvent;
 import network.client.event.MessageEvent;
 import network.message.MessageIdAssigned;
 import network.message.MessageUserChanged;
 import network.message.MessageUserDisconnected;
-
 import controller.AbstractController;
 
 public class UsersTable extends AbstractClientView
@@ -113,6 +114,8 @@ public class UsersTable extends AbstractClientView
 	{
 		User user = message.getUser();
 		UsersModelTable model = (UsersModelTable) tblUsers.getModel();
-		model.getUserManager().updateUser(user);
-		model.fireTableDataChanged();	}
+		model.getUserManager().remove(user);
+		tblUsers.setModel(model);
+		model.fireTableDataChanged();
+	}
 }

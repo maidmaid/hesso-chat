@@ -23,7 +23,7 @@ public class UserManager extends ArrayList<User>
 		return me;
 	}
 	
-	public User getUser(int id)
+	public User getById(int id)
 	{
 		for (User user : this)
 		{
@@ -46,7 +46,7 @@ public class UserManager extends ArrayList<User>
 		mapClient.remove(user);
 	}
 	
-	public User getUser(Client client)
+	public User get(Client client)
 	{
 		for (Object o : mapClient.keySet())
 		{
@@ -59,9 +59,16 @@ public class UserManager extends ArrayList<User>
 		return null;
 	}
 	
+	public User remove(User user)
+	{
+		User u = getById(user.getId());
+		remove((Object) u);
+		return u;
+	}
+	
 	public void updateUser(User user)
 	{
-		User u = getUser(user.getId());
+		User u = getById(user.getId());
 		
 		if(u == null)
 		{
