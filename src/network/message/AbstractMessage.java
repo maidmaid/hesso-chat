@@ -6,22 +6,10 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import javax.xml.bind.DatatypeConverter;
 
-public abstract class MessageAbstract implements Serializable, MessageInterface
+public abstract class AbstractMessage implements Serializable, MessageInterface
 {		
-	
-	private MessageType messageType;
-	private String messageTypeS;
-	
-	public enum MessageType
-	{
-		NEWDISCUSSION,
-		ENDDISCUSION
-	}
-	
-	public MessageAbstract()
-	{
-		
-	}
+	private static final long serialVersionUID = 1L;
+
 	public String serialize()
 	{
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -40,16 +28,4 @@ public abstract class MessageAbstract implements Serializable, MessageInterface
         
         return DatatypeConverter.printBase64Binary(baos.toByteArray()).toString();
     }
-	public MessageType getMessageType() {
-		return messageType;
-	}
-	public void setMessageType(MessageType messageType) {
-		this.messageType = messageType;
-	}
-	public String getMessageTypeS() {
-		return messageTypeS;
-	}
-	public void setMessageTypeS(String messageTypeS) {
-		this.messageTypeS = messageTypeS;
-	}
 }

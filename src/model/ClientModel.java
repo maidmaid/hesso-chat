@@ -51,7 +51,7 @@ public class ClientModel extends AbstractModel
 		@Override
 		public void connexionEstablished()
 		{
-		
+			// Not used
 		}
 	}
 		

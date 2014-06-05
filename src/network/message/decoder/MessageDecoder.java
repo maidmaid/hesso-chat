@@ -9,6 +9,7 @@ import javax.xml.bind.DatatypeConverter;
 import network.message.MessageIdAssigned;
 import network.message.MessageInterface;
 import network.message.MessageUserChanged;
+import network.message.MessageUserDisconnected;
 
 public class MessageDecoder extends AbstractMessageDecoder
 {	
@@ -40,6 +41,10 @@ public class MessageDecoder extends AbstractMessageDecoder
 		else if(message.getClass() == MessageUserChanged.class)
 		{
 			fireUserChanged((MessageUserChanged) message);
+		}
+		else if(message.getClass() == MessageUserDisconnected.class)
+		{
+			fireUserDisconnected((MessageUserDisconnected) message);
 		}
 	}
 }

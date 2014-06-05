@@ -39,6 +39,25 @@ public class Server extends AbstractServer
 		}
 	}
 	
+	public void broadcast(String message)
+	{
+		for (Client c : clients)
+		{
+			c.send(message);
+		}
+	}
+	
+	public void multicast(String message, Client exception)
+	{
+		for (Client c : clients)
+		{
+			if(c != exception)
+			{
+				c.send(message);
+			}
+		}
+	}
+	
 	/**
 	 * Start the server
 	 */

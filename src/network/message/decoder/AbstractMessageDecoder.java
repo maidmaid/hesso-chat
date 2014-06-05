@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import network.message.MessageIdAssigned;
 import network.message.MessageUserChanged;
+import network.message.MessageUserDisconnected;
 import network.message.event.MessageListener;
 
 public class AbstractMessageDecoder
@@ -43,6 +44,14 @@ public class AbstractMessageDecoder
 		for(MessageListener l : listeners)
 		{
 			l.userChanged(message);
+		}
+	}
+	
+	public void fireUserDisconnected(MessageUserDisconnected message)
+	{
+		for(MessageListener l : listeners)
+		{
+			l.userDisconnected(message);
 		}
 	}
 }

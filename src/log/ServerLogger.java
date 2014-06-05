@@ -25,7 +25,7 @@ public class ServerLogger
 		
 		try
 		{
-			FileHandler fileHandler = new FileHandler(".\\server.txt", true);         
+			FileHandler fileHandler = new FileHandler(".\\log\\server.txt", true);         
 			fileHandler.setFormatter(formatter);
 			logger.addHandler(fileHandler);
 		}

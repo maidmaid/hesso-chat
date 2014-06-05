@@ -3,9 +3,11 @@ package model;
 import user.User;
 import user.UserManager;
 import network.client.Client;
+import network.client.event.DisconnectionEvent;
 import network.client.event.MessageEvent;
 import network.message.MessageIdAssigned;
 import network.message.MessageUserChanged;
+import network.message.MessageUserDisconnected;
 import network.message.decoder.MessageDecoder;
 import network.message.event.MessageListener;
 import network.server.Server;
@@ -42,6 +44,11 @@ public class ServerModel extends AbstractModel
 		return decoder;
 	}
 	
+	private int generateId()
+	{
+		return id++;
+	}
+	
 	private class ServerModelListener implements ServerListener
 	{
 		@Override
@@ -56,15 +63,23 @@ public class ServerModel extends AbstractModel
 			Client client = e.getClient();
 			client.addClientListener(new ClientInServerListener());
 					
+			// Generates an unique ID for client
+			int id = generateId();
+			
 			// Assignes an unique ID to client connected
-			id++;
+			User user = new User();
+			user.setId(id);
+			users.add(user);
+			users.link(user, client);
+			
+			// Send le unique ID to the client
 			MessageIdAssigned messageIdAssigned = new MessageIdAssigned(id);
 			client.send(messageIdAssigned.serialize());
 			
 			// Send to client connected the list of other client
-			for (User user : users)
+			for (User u : users)
 			{
-				MessageUserChanged messageUserChanged = new MessageUserChanged(user);
+				MessageUserChanged messageUserChanged = new MessageUserChanged(u);
 				client.send(messageUserChanged.serialize());
 			}
 		}
@@ -79,6 +94,17 @@ public class ServerModel extends AbstractModel
 			public void connexionEstablished()
 			{
 				// Not used
+			}
+
+			@Override
+			public void disconnectionOccured(DisconnectionEvent e)
+			{
+				Client client = (Client) e.getSource();
+				User user = users.getUser(client);
+				
+				MessageUserDisconnected message = new MessageUserDisconnected(user);
+				decoder.fireUserDisconnected(message);
+				server.multicast(message.serialize(), client);	
 			}
 		}
 	}
@@ -95,6 +121,13 @@ public class ServerModel extends AbstractModel
 		public void userChanged(MessageUserChanged message)
 		{
 			users.updateUser(message.getUser());
+		}
+
+		@Override
+		public void userDisconnected(MessageUserDisconnected message)
+		{
+			User user = message.getUser();
+			users.unlink(user);
 		}
 	}
 }
