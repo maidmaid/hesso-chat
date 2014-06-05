@@ -17,7 +17,6 @@ import network.client.Client;
 public class Server extends AbstractServer
 {
 	private ArrayList<Client> clients;
-	private ArrayList<Socket> sockets;
 	private ServerSocket server;
 	private Thread trdConnection;
 	
@@ -75,8 +74,9 @@ public class Server extends AbstractServer
 	    		while(true)
 	    		{
 					Socket socket = server.accept();
-					//sockets.add(socket);
-					fireClientConnected();
+					Client client = new Client(socket);
+					clients.add(client);
+					fireClientConnected(client);
 	    		}
 			}
 	    	catch (IOException e)

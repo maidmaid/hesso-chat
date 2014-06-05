@@ -92,9 +92,5 @@ public class ClientConnexionPanel extends AbstractClientView implements ActionLi
 	{
 		return container;
 	}
-//
-//	public void setIpAdress(String ipAdress) {
-//		this.ipAdress = ipAdress;
-//	}
 }
 

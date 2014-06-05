@@ -22,9 +22,9 @@ public class ClientView extends AbstractClientView
 		frame = new JFrame();
 		
 		connexionPanel = new ClientConnexionPanel(controller);
-		//messagePanel = new ClientMessagePanel();
-		//setContentPane(messagePanel);
+		messagePanel = new ClientMessagePanel(controller);
 		frame.setContentPane(connexionPanel.getContainer());
+		frame.setContentPane(messagePanel.getContainer());
 		
 		frame.setTitle("Client Application");
 		frame.setSize(400, 600);
@@ -32,8 +32,5 @@ public class ClientView extends AbstractClientView
 		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
 		frame.setVisible(true);
-		
-		//String message = 
-		//controller.getModel().getClient().send(message);
 	}
 }

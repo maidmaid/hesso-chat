@@ -2,6 +2,7 @@ package network.server;
 
 import java.util.ArrayList;
 
+import network.client.Client;
 import network.server.event.ChangeEvent;
 import network.server.event.ClientEvent;
 import network.server.event.ServerListener;
@@ -103,12 +104,13 @@ public abstract class AbstractServer
 	
 	/**
 	 * Notifies all listeners that client connected
+	 * @param client 
 	 */
-	public void fireClientConnected()
+	public void fireClientConnected(Client client)
 	{
 		for (ServerListener l : listeners)
 		{
-			ClientEvent e = new ClientEvent(this);
+			ClientEvent e = new ClientEvent(this, client);
 			l.clientConnected(e);
 		}
 	}

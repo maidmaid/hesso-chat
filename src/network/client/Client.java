@@ -24,7 +24,24 @@ public class Client extends AbstractClient
 
 	public Client()
 	{
+		init();
+	}
+
+	public Client(Socket socket)
+	{
+		this.socket = socket;
+		init();
+	}
+	
+	private void init()
+	{
 		threadRead = new Thread(new Read());
+	}
+	
+	private void initSocket() throws IOException
+	{
+		out = new PrintWriter(socket.getOutputStream());
+		in = new BufferedReader(new InputStreamReader(socket.getInputStream())); 
 	}
 
 	public void send(String message)
@@ -59,8 +76,7 @@ public class Client extends AbstractClient
 		
 		socket = new Socket(ip, 1234);
 		
-		out = new PrintWriter(socket.getOutputStream());
-		in = new BufferedReader(new InputStreamReader(socket.getInputStream())); 
+		initSocket();
 		
 		threadRead.start();
 	}
