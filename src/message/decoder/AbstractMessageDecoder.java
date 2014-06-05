@@ -1,14 +1,16 @@
 package message.decoder;
 
 import java.util.ArrayList;
+
+import message.MessageIdAssigned;
 import message.MessageNewUser;
 import message.event.MessageListener;
 
-public class MessageDecoderAbstract
+public class AbstractMessageDecoder
 {
 	protected ArrayList<MessageListener> listeners;
 	
-	public MessageDecoderAbstract()
+	public AbstractMessageDecoder()
 	{
 		listeners = new ArrayList<MessageListener>();
 	}
@@ -33,6 +35,14 @@ public class MessageDecoderAbstract
 		for(MessageListener l : listeners)
 		{
 			l.newUserReceived(message);
+		}
+	}
+	
+	public void fireIdAssigned(MessageIdAssigned message)
+	{
+		for(MessageListener l : listeners)
+		{
+			l.idAssigned(message);
 		}
 	}
 }

@@ -3,11 +3,14 @@ package message.decoder;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+
 import javax.xml.bind.DatatypeConverter;
+
+import message.MessageIdAssigned;
 import message.MessageInterface;
 import message.MessageNewUser;
 
-public class MessageDecoder extends MessageDecoderAbstract
+public class MessageDecoder extends AbstractMessageDecoder
 {	
 	public void decode(String messageSerialized)
 	{
@@ -33,6 +36,10 @@ public class MessageDecoder extends MessageDecoderAbstract
 		if(message.getClass() == MessageNewUser.class)
 		{
 			fireNewUserReceived((MessageNewUser) message);
+		}
+		else if(message.getClass() == MessageIdAssigned.class)
+		{
+			fireIdAssigned((MessageIdAssigned) message);
 		}
 	}
 }
