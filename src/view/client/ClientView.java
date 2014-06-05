@@ -2,12 +2,7 @@ package view.client;
 
 import javax.swing.JFrame;
 
-import view.AbstractView;
-
-import network.client.Client;
-
 import controller.AbstractController;
-import controller.ClientController;
 
 public class ClientView extends AbstractClientView
 {

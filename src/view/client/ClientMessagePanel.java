@@ -2,7 +2,6 @@ package view.client;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -12,13 +11,11 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
-import controller.AbstractController;
-import view.AbstractView;
 import network.client.Client;
-import network.client.event.ClientListener;
-import network.client.event.MessageEvent;
+import controller.AbstractController;
 
 
 public class ClientMessagePanel extends AbstractClientView implements ActionListener
@@ -27,16 +24,13 @@ public class ClientMessagePanel extends AbstractClientView implements ActionList
 	private String frameName = "Message Client";
 	private String message;
 	private String readText;
-	
-	private JTextField inputMessage;
-	private JTextField readMessage;
-	
+	private JTextArea inputMessage;
+	private JTextArea readMessage;
 	private JPanel inputMessagePan;
 	private JPanel readMessagePan;
-	
+	private JLabel readMessageLablel;
+	private JLabel inputMessageLablel;
 	private JButton btEnterMessage;
-	
-	private Client client;
 	
 	public ClientMessagePanel(AbstractController controller)
 	{	
@@ -44,36 +38,44 @@ public class ClientMessagePanel extends AbstractClientView implements ActionList
 		
 		container = new JPanel();
 		
-		readMessage = new JTextField();
+		readMessageLablel = new JLabel("Message received : ");
+		readMessageLablel.setVisible(true);
+		container.add(this.readMessageLablel, BorderLayout.NORTH);
+		
+		readMessage = new JTextArea();
 		Font police = new Font("Ds-digital", Font.TYPE1_FONT,20);
 		readMessage.setFont(police);
-		readMessage.setBackground(Color.pink);
-		readMessage.setHorizontalAlignment(JTextField.CENTER);
-		readMessage.setPreferredSize(new Dimension(280,30));
+		readMessage.setBackground(Color.gray);
+		readMessage.setPreferredSize(new Dimension(280,150));
 		readMessage.setMargin(null);           
 		readMessage.setBorder(BorderFactory.createEmptyBorder());
-		readMessage.setEditable(false);
+		//readMessage.setEditable(false);
+		container.add(new JScrollPane(readMessage));
 		
 		readMessagePan = new JPanel();
-		readMessagePan.setPreferredSize(new Dimension(360,100));
-		readMessagePan.setBackground(Color.pink);
+		readMessagePan.setPreferredSize(new Dimension(360,200));
+		readMessagePan.setBackground(Color.gray);
 		
 		readMessagePan.add(readMessage);
 		readMessagePan.setBorder(BorderFactory.createLineBorder(Color.darkGray));
 		container.add(readMessagePan, BorderLayout.CENTER);
 		
-		inputMessage = new JTextField("Rédiger message");
+		inputMessageLablel = new JLabel("Send a Message : ");
+		inputMessageLablel.setVisible(true);
+		container.add(this.inputMessageLablel, BorderLayout.NORTH);
+		
+		inputMessage = new JTextArea(" ");
 		police = new Font("Ds-digital", Font.TYPE1_FONT,20);
 		inputMessage.setFont(police);
 		inputMessage.setEditable(true);
 		inputMessage.setBackground(Color.white);
-		inputMessage.setHorizontalAlignment(JTextField.CENTER);
-		inputMessage.setPreferredSize(new Dimension(280,30));
+		inputMessage.setPreferredSize(new Dimension(280,150));
 		inputMessage.setMargin(null);           
 		inputMessage.setBorder(BorderFactory.createEmptyBorder());
+		container.add(new JScrollPane(inputMessage));
 		
 		inputMessagePan = new JPanel();
-		inputMessagePan.setPreferredSize(new Dimension(360,100));
+		inputMessagePan.setPreferredSize(new Dimension(360,200));
 		inputMessagePan.setBackground(Color.white);
 		
 		inputMessagePan.add(inputMessage);
@@ -82,7 +84,7 @@ public class ClientMessagePanel extends AbstractClientView implements ActionList
 		
 		btEnterMessage = new JButton("Send Message");
 		container.add(btEnterMessage, BorderLayout.CENTER);
-		btEnterMessage.setPreferredSize(new Dimension(200,60));
+		btEnterMessage.setPreferredSize(new Dimension(360, 60));
 		btEnterMessage.addActionListener(this);
 	}
 
@@ -92,7 +94,6 @@ public class ClientMessagePanel extends AbstractClientView implements ActionList
 		if(e.getSource() == btEnterMessage)
 		{
 			message = inputMessage.getText();
-			client.send(message);
 		}
 	}
 	
@@ -100,7 +101,7 @@ public class ClientMessagePanel extends AbstractClientView implements ActionList
 	{
 		readMessage.setText(message);
 	}
-
+	
 	public JPanel getContainer()
 	{
 		return container;
