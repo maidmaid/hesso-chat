@@ -85,6 +85,7 @@ public class Client extends AbstractClient
 		
 		socket = new Socket(ip, 1234);
 		
+		fireConnexionEstablished();
 		initSocket();
 		
 		threadRead.start();

@@ -37,4 +37,12 @@ public abstract class AbstractClient
 			l.messageReceived(e);
 		}
 	}
+	
+	public void fireConnexionEstablished()
+	{
+		for (ClientListener l : listeners)
+		{
+			l.connexionEstablished();
+		}
+	}
 }
