@@ -17,6 +17,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import network.client.event.MessageEvent;
+import network.message.MessageIdAssigned;
+import network.message.MessageUserChanged;
 import controller.AbstractController;
 
 public class ClientConnexionPanel extends AbstractClientView implements ActionListener
@@ -140,6 +142,18 @@ public class ClientConnexionPanel extends AbstractClientView implements ActionLi
 
 	@Override
 	public void connexionEstablished() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void idAssigned(MessageIdAssigned message) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void userChanged(MessageUserChanged message) {
 		// TODO Auto-generated method stub
 		
 	}
