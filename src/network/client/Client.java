@@ -43,7 +43,8 @@ public class Client extends AbstractClient
 	private void initSocket() throws IOException
 	{
 		out = new PrintWriter(getSocket().getOutputStream());
-		in = new BufferedReader(new InputStreamReader(getSocket().getInputStream())); 
+		in = new BufferedReader(new InputStreamReader(getSocket().getInputStream()));
+		threadRead.start();
 	}
 
 	public void send(String message)
@@ -80,8 +81,6 @@ public class Client extends AbstractClient
 		
 		fireConnexionEstablished();
 		initSocket();
-		
-		threadRead.start();
 	}
 
 	private Socket getSocket() {

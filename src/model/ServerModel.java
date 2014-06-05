@@ -42,6 +42,11 @@ public class ServerModel extends AbstractModel
 		return decoder;
 	}
 	
+	private int generateId()
+	{
+		return id++;
+	}
+	
 	private class ServerModelListener implements ServerListener
 	{
 		@Override
@@ -57,7 +62,7 @@ public class ServerModel extends AbstractModel
 			client.addClientListener(new ClientInServerListener());
 					
 			// Assignes an unique ID to client connected
-			id++;
+			int id = generateId();
 			MessageIdAssigned messageIdAssigned = new MessageIdAssigned(id);
 			client.send(messageIdAssigned.serialize());
 			

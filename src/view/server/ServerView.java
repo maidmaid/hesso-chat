@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import user.User;
 import log.ServerLogger;
 import network.message.MessageIdAssigned;
 import network.message.MessageUserChanged;
@@ -83,12 +84,12 @@ public class ServerView extends AbstractServerView
 	@Override
 	public void idAssigned(MessageIdAssigned message)
 	{
-		logger.info("Attribution d'un ID au nouveau client: " + message.getId());
+		// Not used
 	}
 
 	@Override
 	public void userChanged(MessageUserChanged message)
 	{
-		logger.info("userchanged");
+		logger.info(message.getUser().getUsername() + " a modifié ses informations utilisateur.");
 	}
 }
