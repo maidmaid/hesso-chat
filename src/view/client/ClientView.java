@@ -53,7 +53,7 @@ public class ClientView extends AbstractClientView
 	@Override
 	public void messageReceived(MessageEvent e)
 	{
-		System.out.println("message recu");
+		System.out.println("message recu : " + e.getMessage());
 	}
 
 	@Override
