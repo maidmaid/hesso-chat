@@ -1,6 +1,6 @@
 package model;
 
-import message.MessageIdAssigned;
+import network.message.MessageIdAssigned;
 import network.server.Server;
 import network.server.event.ChangeEvent;
 import network.server.event.ClientEvent;

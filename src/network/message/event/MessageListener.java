@@ -1,7 +1,7 @@
-package message.event;
+package network.message.event;
 
-import message.MessageIdAssigned;
-import message.MessageNewUser;
+import network.message.MessageIdAssigned;
+import network.message.MessageNewUser;
 
 public interface MessageListener
 {

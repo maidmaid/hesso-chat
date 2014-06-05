@@ -1,4 +1,4 @@
-package message.decoder;
+package network.message.decoder;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -6,9 +6,9 @@ import java.io.ObjectInputStream;
 
 import javax.xml.bind.DatatypeConverter;
 
-import message.MessageIdAssigned;
-import message.MessageInterface;
-import message.MessageNewUser;
+import network.message.MessageIdAssigned;
+import network.message.MessageInterface;
+import network.message.MessageNewUser;
 
 public class MessageDecoder extends AbstractMessageDecoder
 {	

@@ -1,12 +1,12 @@
 package model;
 
-import message.MessageIdAssigned;
-import message.MessageNewUser;
-import message.decoder.MessageDecoder;
-import message.event.MessageListener;
 import network.client.Client;
 import network.client.event.ClientListener;
 import network.client.event.MessageEvent;
+import network.message.MessageIdAssigned;
+import network.message.MessageNewUser;
+import network.message.decoder.MessageDecoder;
+import network.message.event.MessageListener;
 
 public class ClientModel extends AbstractModel
 {

@@ -1,4 +1,4 @@
-package message;
+package network.message;
 
 public interface MessageInterface
 {

@@ -1,10 +1,10 @@
-package message.decoder;
+package network.message.decoder;
 
 import java.util.ArrayList;
 
-import message.MessageIdAssigned;
-import message.MessageNewUser;
-import message.event.MessageListener;
+import network.message.MessageIdAssigned;
+import network.message.MessageNewUser;
+import network.message.event.MessageListener;
 
 public class AbstractMessageDecoder
 {
