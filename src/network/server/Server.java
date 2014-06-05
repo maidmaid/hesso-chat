@@ -26,6 +26,7 @@ public class Server extends AbstractServer
 	public Server()
 	{
 		super();
+		clients = new ArrayList<Client>();
 		
 		try
 		{

@@ -12,6 +12,7 @@ public class ServerModel extends AbstractModel
 	public ServerModel()
 	{
 		server = new Server();
+		server.addServerListener(new ServerModelListener());
 	}
 	
 	public Server getServer()
@@ -19,7 +20,7 @@ public class ServerModel extends AbstractModel
 		return server;
 	}
 	
-	private class ServerModelAction implements ServerListener
+	private class ServerModelListener implements ServerListener
 	{
 		@Override
 		public void stateChanged(ChangeEvent e)

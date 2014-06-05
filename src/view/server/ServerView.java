@@ -20,7 +20,7 @@ import controller.ServerController;
  * ServerApp est l'application chat côté serveur
  * @author DM
  */
-public class ServerView extends AbstractView implements ServerListener
+public class ServerView extends AbstractServerView
 {
 	private JFrame frame;
 	private Logger logger;
@@ -54,6 +54,7 @@ public class ServerView extends AbstractView implements ServerListener
 		return (ServerController) super.getController(); 
 	}
 
+	@Override
 	public void stateChanged(ChangeEvent e)
 	{
 		Server server = (Server)e.getSource();
@@ -73,6 +74,7 @@ public class ServerView extends AbstractView implements ServerListener
 		}	
 	}
 
+	@Override
 	public void clientConnected(ClientEvent e)
 	{
 		logger.info("Nouveau client");

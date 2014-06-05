@@ -31,6 +31,15 @@ public class Client extends AbstractClient
 	{
 		this.socket = socket;
 		init();
+		
+		try
+		{
+			initSocket();
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	private void init()

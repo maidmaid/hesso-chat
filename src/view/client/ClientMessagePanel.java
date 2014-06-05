@@ -15,6 +15,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import network.client.Client;
+import network.client.event.MessageEvent;
 import controller.AbstractController;
 
 
@@ -105,5 +106,11 @@ public class ClientMessagePanel extends AbstractClientView implements ActionList
 	public JPanel getContainer()
 	{
 		return container;
+	}
+
+	@Override
+	public void messageReceived(MessageEvent e)
+	{
+		
 	}
 }

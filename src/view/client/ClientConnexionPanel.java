@@ -17,8 +17,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import network.client.event.MessageEvent;
 import view.AbstractView;
-
 import controller.AbstractController;
 import controller.ClientController;
 
@@ -129,6 +129,12 @@ public class ClientConnexionPanel extends AbstractClientView implements ActionLi
 	public JPanel getContainer()
 	{
 		return container;
+	}
+
+	@Override
+	public void messageReceived(MessageEvent e)
+	{
+		
 	}
 }
 

@@ -1,10 +1,11 @@
 package view.client;
 
+import network.client.event.ClientListener;
 import controller.AbstractController;
 import controller.ClientController;
 import view.AbstractView;
 
-public class AbstractClientView extends AbstractView
+abstract public class AbstractClientView extends AbstractView implements ClientListener
 {
 	public AbstractClientView(AbstractController controller)
 	{

@@ -15,6 +15,10 @@ public class ClientController extends AbstractController
 	{
 		super(model);
 		view = new ClientView(this);
+		
+		getModel().getClient().addClientListener(view);
+		getModel().getClient().addClientListener(view.getConnexionPanel());
+		getModel().getClient().addClientListener(view.getMessagePanel());
 	}
 	
 	@Override

@@ -2,6 +2,7 @@ package view.client;
 
 import javax.swing.JFrame;
 
+import network.client.event.MessageEvent;
 import controller.AbstractController;
 
 public class ClientView extends AbstractClientView
@@ -19,7 +20,7 @@ public class ClientView extends AbstractClientView
 		connexionPanel = new ClientConnexionPanel(controller);
 		messagePanel = new ClientMessagePanel(controller);
 		frame.setContentPane(connexionPanel.getContainer());
-		frame.setContentPane(messagePanel.getContainer());
+		//frame.setContentPane(messagePanel.getContainer());
 		
 		frame.setTitle("Client Application");
 		frame.setSize(400, 600);
@@ -27,5 +28,21 @@ public class ClientView extends AbstractClientView
 		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
 		frame.setVisible(true);
+	}
+	
+	public ClientConnexionPanel getConnexionPanel()
+	{
+		return connexionPanel;
+	}
+	
+	public ClientMessagePanel getMessagePanel()
+	{
+		return messagePanel;
+	}
+
+	@Override
+	public void messageReceived(MessageEvent e)
+	{
+		
 	}
 }
