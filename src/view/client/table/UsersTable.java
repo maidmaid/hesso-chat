@@ -14,9 +14,11 @@ import user.User;
 import view.client.AbstractClientView;
 import view.client.ClientView;
 
+import network.client.event.DisconnectionEvent;
 import network.client.event.MessageEvent;
 import network.message.MessageIdAssigned;
 import network.message.MessageUserChanged;
+import network.message.MessageUserDisconnected;
 
 import controller.AbstractController;
 
@@ -94,5 +96,17 @@ public class UsersTable extends AbstractClientView
 	public void userChanged(MessageUserChanged message)
 	{
 		User user = message.getUser();
+	}
+
+	@Override
+	public void disconnectionOccured(DisconnectionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void userDisconnected(MessageUserDisconnected message) {
+		// TODO Auto-generated method stub
+		
 	}
 }

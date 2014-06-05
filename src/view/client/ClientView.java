@@ -2,13 +2,13 @@ package view.client;
 
 import javax.swing.JFrame;
 
-import user.User;
-import view.client.table.UsersTable;
-
-import network.client.event.ClientListener;
+import network.client.event.DisconnectionEvent;
 import network.client.event.MessageEvent;
 import network.message.MessageIdAssigned;
 import network.message.MessageUserChanged;
+import network.message.MessageUserDisconnected;
+import user.User;
+import view.client.table.UsersTable;
 import controller.AbstractController;
 
 public class ClientView extends AbstractClientView
@@ -87,6 +87,18 @@ public class ClientView extends AbstractClientView
 	public void userChanged(MessageUserChanged message) {
 		// TODO Auto-generated method stub
 		User u = message.getUser();
+	}
+
+	@Override
+	public void disconnectionOccured(DisconnectionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void userDisconnected(MessageUserDisconnected message) {
+		User u = message.getUser();
+		
 	}
 
 }

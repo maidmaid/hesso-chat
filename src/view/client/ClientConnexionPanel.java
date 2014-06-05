@@ -16,9 +16,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import network.client.event.DisconnectionEvent;
 import network.client.event.MessageEvent;
 import network.message.MessageIdAssigned;
 import network.message.MessageUserChanged;
+import network.message.MessageUserDisconnected;
 import controller.AbstractController;
 
 public class ClientConnexionPanel extends AbstractClientView implements ActionListener
@@ -154,6 +156,18 @@ public class ClientConnexionPanel extends AbstractClientView implements ActionLi
 
 	@Override
 	public void userChanged(MessageUserChanged message) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void disconnectionOccured(DisconnectionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void userDisconnected(MessageUserDisconnected message) {
 		// TODO Auto-generated method stub
 		
 	}
