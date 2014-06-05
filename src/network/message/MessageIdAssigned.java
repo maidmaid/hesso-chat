@@ -1,6 +1,6 @@
 package network.message;
 
-public class MessageIdAssigned extends MessageAbstract
+public class MessageIdAssigned extends AbstractMessage
 {
 	private static final long serialVersionUID = 1L;
 	

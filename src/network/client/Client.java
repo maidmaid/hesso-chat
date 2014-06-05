@@ -58,9 +58,11 @@ public class Client extends AbstractClient
 		@Override
 		public void run()
 		{
+			boolean connected = true;
+			
 			try
 			{
-				while(true)
+				while(connected)
 				{
 					String message = in.readLine();
 					fireMessageReceived(message);
@@ -68,7 +70,9 @@ public class Client extends AbstractClient
 			}
 			catch(IOException e)
 			{
-				e.printStackTrace();
+				connected = false;
+				fireDisconnectionOccured(e.getMessage());
+				System.out.println(e.getMessage());
 			}
 		}
 	}

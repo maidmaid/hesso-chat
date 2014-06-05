@@ -3,6 +3,7 @@ package network.client;
 import java.util.ArrayList;
 
 import network.client.event.ClientListener;
+import network.client.event.DisconnectionEvent;
 import network.client.event.MessageEvent;
 
 public abstract class AbstractClient
@@ -43,6 +44,15 @@ public abstract class AbstractClient
 		for (ClientListener l : listeners)
 		{
 			l.connexionEstablished();
+		}
+	}
+	
+	public void fireDisconnectionOccured(String message)
+	{
+		for (ClientListener l : listeners)
+		{
+			DisconnectionEvent e = new DisconnectionEvent(this, message);
+			l.disconnectionOccured(e);
 		}
 	}
 }

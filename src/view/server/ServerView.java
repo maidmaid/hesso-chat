@@ -10,6 +10,7 @@ import user.User;
 import log.ServerLogger;
 import network.message.MessageIdAssigned;
 import network.message.MessageUserChanged;
+import network.message.MessageUserDisconnected;
 import network.server.Server;
 import network.server.event.ChangeEvent;
 import network.server.event.ClientEvent;
@@ -92,5 +93,12 @@ public class ServerView extends AbstractServerView
 	{
 		User user = message.getUser();
 		logger.info(user.getUsername() + " (" + user.getId() + ") a modifié ses informations utilisateur.");
+	}
+
+	@Override
+	public void userDisconnected(MessageUserDisconnected message)
+	{
+		User user = message.getUser();
+		logger.info(user.getUsername() + " (" + user.getId() + ") s'est déconnecté.");
 	}
 }
