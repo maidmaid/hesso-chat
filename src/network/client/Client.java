@@ -16,7 +16,7 @@ import view.client.ClientMessagePanel;
 
 public class Client extends AbstractClient
 {
-	Socket socket;
+	private Socket socket;
 	Thread threadRead;
 	BufferedReader in;
 	PrintWriter out;
@@ -29,7 +29,7 @@ public class Client extends AbstractClient
 
 	public Client(Socket socket)
 	{
-		this.socket = socket;
+		this.setSocket(socket);
 		init();
 		
 		try
@@ -49,8 +49,8 @@ public class Client extends AbstractClient
 	
 	private void initSocket() throws IOException
 	{
-		out = new PrintWriter(socket.getOutputStream());
-		in = new BufferedReader(new InputStreamReader(socket.getInputStream())); 
+		out = new PrintWriter(getSocket().getOutputStream());
+		in = new BufferedReader(new InputStreamReader(getSocket().getInputStream())); 
 	}
 
 	public void send(String message)
@@ -83,11 +83,19 @@ public class Client extends AbstractClient
 	{
 		threadRead.interrupt();
 		
-		socket = new Socket(ip, 1234);
+		setSocket(new Socket(ip, 1234));
 		
 		fireConnexionEstablished();
 		initSocket();
 		
 		threadRead.start();
+	}
+
+	private Socket getSocket() {
+		return socket;
+	}
+
+	private void setSocket(Socket socket) {
+		this.socket = socket;
 	}
 }

@@ -41,6 +41,12 @@ public class ClientModel extends AbstractModel
 		{
 			decoder.decode(e.getMessage());
 		}
+
+		@Override
+		public void connexionEstablished() {
+			// TODO Auto-generated method stub
+		
+		}
 	}
 	
 	private class ClientMessageListener implements MessageListener
