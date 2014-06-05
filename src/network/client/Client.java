@@ -5,13 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.net.SocketAddress;
-import java.net.UnknownHostException;
-import java.util.Scanner;
-
-import archives.ClientAbstract;
-import view.client.ClientConnexionPanel;
-import view.client.ClientMessagePanel;
 
 
 public class Client extends AbstractClient

@@ -1,6 +1,5 @@
 package main;
 
-import view.client.ClientView;
 import model.ClientModel;
 import controller.ClientController;
 

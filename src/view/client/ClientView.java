@@ -1,10 +1,7 @@
 package view.client;
 
-import java.net.Socket;
-
 import javax.swing.JFrame;
 
-import network.client.Client;
 import network.client.event.MessageEvent;
 import controller.AbstractController;
 

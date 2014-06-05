@@ -6,12 +6,10 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import view.AbstractView;
+import log.ServerLogger;
 import network.server.Server;
 import network.server.event.ChangeEvent;
 import network.server.event.ClientEvent;
-import network.server.event.ServerListener;
-import log.ServerLogger;
 import controller.AbstractController;
 import controller.ServerController;
 

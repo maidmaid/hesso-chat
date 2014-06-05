@@ -4,7 +4,6 @@ import network.client.Client;
 import network.client.event.ClientListener;
 import network.client.event.MessageEvent;
 import network.message.MessageIdAssigned;
-import network.message.MessageNewUser;
 import network.message.decoder.MessageDecoder;
 import network.message.event.MessageListener;
 
@@ -41,20 +40,20 @@ public class ClientModel extends AbstractModel
 		{
 			decoder.decode(e.getMessage());
 		}
+
+		@Override
+		public void connexionEstablished()
+		{
+			
+		}
 	}
 	
 	private class ClientMessageListener implements MessageListener
 	{
 		@Override
-		public void newUserReceived(MessageNewUser message)
-		{
-			
-		}
-
-		@Override
 		public void idAssigned(MessageIdAssigned message)
 		{
-			System.out.println("id attribué " + message.getId());
+			// TODO
 		}
 	}
 }

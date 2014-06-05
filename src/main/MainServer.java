@@ -2,7 +2,6 @@ package main;
 
 import model.ServerModel;
 import controller.ServerController;
-import view.server.ServerView;
 
 /**
  * MainServer exécute le serveur de chat

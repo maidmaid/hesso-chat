@@ -10,7 +10,6 @@ import java.io.IOException;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -18,9 +17,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import network.client.event.MessageEvent;
-import view.AbstractView;
 import controller.AbstractController;
-import controller.ClientController;
 
 public class ClientConnexionPanel extends AbstractClientView implements ActionListener
 {
