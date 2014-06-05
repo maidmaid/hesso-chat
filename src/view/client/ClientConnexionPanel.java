@@ -36,6 +36,9 @@ public class ClientConnexionPanel extends AbstractClientView implements ActionLi
 	private JTextArea areError;
 	private JPanel pnlError;
 	private JLabel lblError;
+	private JTextField fldUserNameChange;
+	private JLabel lblUserNameChange;
+	private JPanel pnlUserNameChange;
 
 	/**
 	 *CHOICE ELEMENT'S PREFIXING :
@@ -81,7 +84,7 @@ public class ClientConnexionPanel extends AbstractClientView implements ActionLi
 		pnlContainer.add(this.lblIp, BorderLayout.NORTH);
 		
 		//Initialization of the JTextField ipText
-		txtIp = new JTextField(15);
+		txtIp = new JTextField("127.0.0.1");
 		Font police = new Font("Ds-digital", Font.TYPE1_FONT,20);
 		txtIp.setFont(police);
 		txtIp.setHorizontalAlignment(JTextField.CENTER);
@@ -96,7 +99,7 @@ public class ClientConnexionPanel extends AbstractClientView implements ActionLi
 		pnlIp.add(txtIp);
 		pnlIp.setBorder(BorderFactory.createLineBorder(Color.darkGray));
 		pnlContainer.add(pnlIp, BorderLayout.CENTER);
-
+		
 		//Initialization of the Enter button
 		btEnter = new JButton("Enter");
 		pnlContainer.add(btEnter, BorderLayout.SOUTH);
