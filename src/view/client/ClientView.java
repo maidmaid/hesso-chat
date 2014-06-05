@@ -1,10 +1,7 @@
 package view.client;
 
-import java.net.Socket;
-
 import javax.swing.JFrame;
 
-import network.client.Client;
 import network.client.event.MessageEvent;
 import controller.AbstractController;
 
@@ -56,7 +53,7 @@ public class ClientView extends AbstractClientView
 	@Override
 	public void messageReceived(MessageEvent e)
 	{
-		System.out.println("message recu");
+		System.out.println("message recu : " + e.getMessage());
 	}
 
 	@Override

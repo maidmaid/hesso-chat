@@ -1,4 +1,4 @@
-package message.decoder;
+package network.message.decoder;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -6,9 +6,8 @@ import java.io.ObjectInputStream;
 
 import javax.xml.bind.DatatypeConverter;
 
-import message.MessageIdAssigned;
-import message.MessageInterface;
-import message.MessageNewUser;
+import network.message.MessageIdAssigned;
+import network.message.MessageInterface;
 
 public class MessageDecoder extends AbstractMessageDecoder
 {	
@@ -33,11 +32,7 @@ public class MessageDecoder extends AbstractMessageDecoder
 			e.printStackTrace();
 		}
 		
-		if(message.getClass() == MessageNewUser.class)
-		{
-			fireNewUserReceived((MessageNewUser) message);
-		}
-		else if(message.getClass() == MessageIdAssigned.class)
+		if(message.getClass() == MessageIdAssigned.class)
 		{
 			fireIdAssigned((MessageIdAssigned) message);
 		}

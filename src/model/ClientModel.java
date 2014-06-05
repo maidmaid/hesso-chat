@@ -1,16 +1,18 @@
 package model;
 
-import message.MessageIdAssigned;
-import message.MessageNewUser;
-import message.decoder.MessageDecoder;
-import message.event.MessageListener;
+import user.User;
+import user.UserManager;
 import network.client.Client;
 import network.client.event.ClientListener;
 import network.client.event.MessageEvent;
+import network.message.MessageIdAssigned;
+import network.message.decoder.MessageDecoder;
+import network.message.event.MessageListener;
 
 public class ClientModel extends AbstractModel
 {
 	private Client client;
+	private UserManager users;
 	private MessageDecoder decoder;
 	
 	public ClientModel() 
@@ -18,6 +20,9 @@ public class ClientModel extends AbstractModel
 		// Client
 		client = new Client();
 		client.addClientListener(new ClientModelListener());
+		
+		// User
+		users = new UserManager();
 		
 		// Decoder
 		decoder = new MessageDecoder();
@@ -43,24 +48,18 @@ public class ClientModel extends AbstractModel
 		}
 
 		@Override
-		public void connexionEstablished() {
-			// TODO Auto-generated method stub
+		public void connexionEstablished()
+		{
 		
 		}
 	}
-	
+		
 	private class ClientMessageListener implements MessageListener
 	{
 		@Override
-		public void newUserReceived(MessageNewUser message)
-		{
-			
-		}
-
-		@Override
 		public void idAssigned(MessageIdAssigned message)
 		{
-			System.out.println("id attribué " + message.getId());
+			users.getMe().setId(message.getId());
 		}
 	}
 }

@@ -1,4 +1,4 @@
-package message;
+package network.message;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

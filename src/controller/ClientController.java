@@ -2,10 +2,7 @@ package controller;
 
 import model.AbstractModel;
 import model.ClientModel;
-import view.client.ClientConnexionPanel;
-import view.client.ClientMessagePanel;
 import view.client.ClientView;
-
 
 public class ClientController extends AbstractController
 {
@@ -16,9 +13,15 @@ public class ClientController extends AbstractController
 		super(model);
 		view = new ClientView(this);
 		
+		// Views are listeners of Client
 		getModel().getClient().addClientListener(view);
 		getModel().getClient().addClientListener(view.getConnexionPanel());
 		getModel().getClient().addClientListener(view.getMessagePanel());
+		
+		// Views are listeners of MessageDecoder
+		getModel().getMessageDecoder().addMessageListener(view);
+		getModel().getMessageDecoder().addMessageListener(view.getConnexionPanel());
+		getModel().getMessageDecoder().addMessageListener(view.getMessagePanel());
 	}
 	
 	@Override

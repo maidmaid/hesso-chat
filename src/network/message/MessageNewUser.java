@@ -1,4 +1,4 @@
-package message;
+package network.message;
 
 public class MessageNewUser extends MessageAbstract
 {

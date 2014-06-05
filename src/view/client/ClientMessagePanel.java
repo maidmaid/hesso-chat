@@ -14,7 +14,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import network.client.Client;
 import network.client.event.MessageEvent;
 import controller.AbstractController;
 
