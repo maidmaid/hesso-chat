@@ -1,6 +1,7 @@
 package network.message.decoder;
 
 import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import network.message.MessageConversationOpened;
 import network.message.MessageConversationUpdated;
@@ -11,11 +12,11 @@ import network.message.event.MessageListener;
 
 public class AbstractMessageDecoder
 {
-	protected ArrayList<MessageListener> listeners;
+	protected CopyOnWriteArrayList<MessageListener> listeners;
 	
 	public AbstractMessageDecoder()
 	{
-		listeners = new ArrayList<MessageListener>();
+		listeners = new CopyOnWriteArrayList<MessageListener>();
 	}
 	
 	public void addMessageListener(MessageListener l)
@@ -28,7 +29,7 @@ public class AbstractMessageDecoder
 		listeners.remove(l);
 	}
 	
-	public ArrayList<MessageListener> getMessageListeners()
+	public CopyOnWriteArrayList<MessageListener> getMessageListeners()
 	{
 		return listeners;
 	}
