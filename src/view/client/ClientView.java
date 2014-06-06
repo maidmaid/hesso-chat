@@ -1,5 +1,7 @@
 package view.client;
 
+import java.util.Hashtable;
+
 import javax.swing.JFrame;
 
 import network.client.event.DisconnectionEvent;
@@ -17,7 +19,8 @@ public class ClientView extends AbstractClientView
 	private ClientConnexionPanel pnlConnexion;
 	private ClientMessageFrame pnlMessage;
 	private UsersTable pnlUsers;
-
+	private Hashtable<Integer, ClientMessageFrame> messageFrameList;
+	
 	/**
 	 *CHOICE ELEMENT'S PREFIXING :
 	 * 
@@ -33,7 +36,7 @@ public class ClientView extends AbstractClientView
 		super(controller);
 		
 		frame = new JFrame();
-		
+		messageFrameList = new Hashtable<Integer,ClientMessageFrame>();
 		
 		pnlConnexion = new ClientConnexionPanel(controller);
 		pnlMessage = new ClientMessageFrame(controller);
@@ -100,5 +103,5 @@ public class ClientView extends AbstractClientView
 		User u = message.getUser();
 		
 	}
-
+	
 }
