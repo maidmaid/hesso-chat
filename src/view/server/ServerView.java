@@ -8,6 +8,7 @@ import javax.swing.JTextArea;
 
 import user.User;
 import log.ServerLogger;
+import network.message.MessageConversationOpened;
 import network.message.MessageIdAssigned;
 import network.message.MessageUserChanged;
 import network.message.MessageUserDisconnected;
@@ -100,5 +101,20 @@ public class ServerView extends AbstractServerView
 	{
 		User user = message.getUser();
 		logger.info(user.getUsername() + " (" + user.getId() + ") s'est déconnecté.");
+	}
+
+	@Override
+	public void conversationOpened(MessageConversationOpened message) 
+	{
+		String users = "";
+		
+		for (User user : message.getUsers())
+		{
+			users += user.getUsername() + " (" + user.getId() + ") et ";
+		}
+		
+		users.substring(0, users.length() - 4);
+		
+		logger.info("Nouvelle discussion entre " + users);
 	}
 }

@@ -5,6 +5,7 @@ import user.UserManager;
 import network.client.Client;
 import network.client.event.DisconnectionEvent;
 import network.client.event.MessageEvent;
+import network.message.MessageConversationOpened;
 import network.message.MessageIdAssigned;
 import network.message.MessageUserChanged;
 import network.message.MessageUserDisconnected;
@@ -54,7 +55,7 @@ public class ServerModel extends AbstractModel
 		@Override
 		public void stateChanged(ChangeEvent e)
 		{
-			
+			// TODO ?
 		}
 
 		@Override
@@ -130,7 +131,12 @@ public class ServerModel extends AbstractModel
 			User user = message.getUser();
 			users.unlink(user);
 			users.remove(user);
-			System.out.println("déco");
+		}
+
+		@Override
+		public void conversationOpened(MessageConversationOpened message)
+		{
+			// TODO Send archives conversation	
 		}
 	}
 }
