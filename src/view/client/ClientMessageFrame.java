@@ -9,21 +9,26 @@ import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import model.ClientModel;
 import network.client.event.DisconnectionEvent;
 import network.client.event.MessageEvent;
 import network.message.MessageIdAssigned;
 import network.message.MessageUserChanged;
 import network.message.MessageUserDisconnected;
 import controller.AbstractController;
+import controller.ClientController;
 
 
-public class ClientMessagePanel extends AbstractClientView implements ActionListener
+public class ClientMessageFrame extends AbstractClientView implements ActionListener
 {
+	//private JPanel pnlContainer;
+	private JFrame messageFrame;
 	private JPanel pnlContainer;
 	private String message;
 	private String readText;
@@ -45,11 +50,20 @@ public class ClientMessagePanel extends AbstractClientView implements ActionList
 	 * JTextArea	:	are
 	 * */
 	
-	public ClientMessagePanel(AbstractController controller)
+	public ClientMessageFrame(AbstractController controller)
 	{	
 		super(controller);
 		
 		pnlContainer = new JPanel();
+		messageFrame = new JFrame();
+		messageFrame.setContentPane(pnlContainer);
+		
+		messageFrame.setTitle("Client Application");
+		messageFrame.setSize(400, 600);
+		messageFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		messageFrame.setLocationRelativeTo(null);
+		messageFrame.setResizable(false);
+		messageFrame.setVisible(true);
 		
 		lblReadMessage = new JLabel("Message received : ");
 		lblReadMessage.setVisible(true);
@@ -99,8 +113,9 @@ public class ClientMessagePanel extends AbstractClientView implements ActionList
 		pnlContainer.add(btnEnterMessage, BorderLayout.CENTER);
 		btnEnterMessage.setPreferredSize(new Dimension(360, 60));
 		btnEnterMessage.addActionListener(this);
+		
 	}
-
+	
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
@@ -115,9 +130,14 @@ public class ClientMessagePanel extends AbstractClientView implements ActionList
 		areReadMessage.setText(message);
 	}
 	
-	public JPanel getContainer()
+//	public JPanel getContainer()
+//	{
+//		return pnlContainer;
+//	}
+	
+	public JFrame getFrame()
 	{
-		return pnlContainer;
+		return messageFrame;
 	}
 
 	@Override
