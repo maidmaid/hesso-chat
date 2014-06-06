@@ -107,10 +107,10 @@ public class ClientView extends AbstractClientView
 	}
 
 	@Override
-	public void conversationOpened(MessageConversationOpened message) {
-		// TODO Auto-generated method stub
-		message.getUsers();
-		
+	public void conversationOpened(MessageConversationOpened message)
+	{
+		ClientMessageFrame frame = new ClientMessageFrame(getController());
+		getController().getModel().getMessageDecoder().addMessageListener(frame);
 	}
 
 	@Override

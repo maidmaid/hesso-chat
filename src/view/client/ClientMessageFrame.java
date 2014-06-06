@@ -6,6 +6,10 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import java.awt.event.WindowStateListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -23,6 +27,7 @@ import network.message.MessageConversationUpdated;
 import network.message.MessageIdAssigned;
 import network.message.MessageUserChanged;
 import network.message.MessageUserDisconnected;
+import network.message.event.MessageListener;
 import controller.AbstractController;
 import controller.ClientController;
 
@@ -62,10 +67,10 @@ public class ClientMessageFrame extends AbstractClientView implements ActionList
 		
 		messageFrame.setTitle("Client Application");
 		messageFrame.setSize(400, 600);
-		messageFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		messageFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		messageFrame.setLocationRelativeTo(null);
 		messageFrame.setResizable(false);
-		messageFrame.setVisible(true);
+		messageFrame.addWindowListener(new FrameClosedListener(this));
 		
 		lblReadMessage = new JLabel("Message received : ");
 		lblReadMessage.setVisible(true);
@@ -116,6 +121,7 @@ public class ClientMessageFrame extends AbstractClientView implements ActionList
 		btnEnterMessage.setPreferredSize(new Dimension(360, 60));
 		btnEnterMessage.addActionListener(this);
 		
+		messageFrame.setVisible(true);
 	}
 	
 	@Override
@@ -148,6 +154,23 @@ public class ClientMessageFrame extends AbstractClientView implements ActionList
 		
 	}
 
+	private class FrameClosedListener extends WindowAdapter
+	{
+		private MessageListener listener;
+		
+		public FrameClosedListener(MessageListener listener)
+		{
+			this.listener = listener;
+		}
+		
+		@Override
+		public void windowClosed(WindowEvent e)
+		{
+			super.windowClosed(e);
+			getController().getModel().getMessageDecoder().removeMessageListener(listener);
+		}
+	}
+	
 	@Override
 	public void connexionEstablished() {
 		// TODO Auto-generated method stub
