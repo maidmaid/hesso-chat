@@ -8,8 +8,8 @@ public class MessageConversationOpened extends MessageConversation
 {
 	private static final long serialVersionUID = 1L;
 	
-	public MessageConversationOpened(ArrayList<User> users)
+	public MessageConversationOpened(ArrayList<User> users, User author)
 	{
-		super(users);
+		super(users, author);
 	}
 }

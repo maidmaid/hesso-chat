@@ -50,7 +50,7 @@ public class ClientController extends AbstractController
 		users.add(me);
 		users.add(user);
 		
-		MessageConversationOpened message = new MessageConversationOpened(users);
+		MessageConversationOpened message = new MessageConversationOpened(users, me);
 		getModel().getClient().send(message.serialize());
 	}
 	
