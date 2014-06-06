@@ -6,12 +6,15 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Panel;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Hashtable;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import user.User;
 import user.UserManager;
@@ -26,7 +29,7 @@ import network.message.MessageUserChanged;
 import network.message.MessageUserDisconnected;
 import controller.AbstractController;
 
-public class UsersTable extends AbstractClientView
+public class UsersTable extends AbstractClientView implements ActionListener
 {
 	private JPanel pnlUsers = null;
 	private JScrollPane spnTable = null;
@@ -57,6 +60,7 @@ public class UsersTable extends AbstractClientView
 		tblUsers.setModel(model);
 		tblUsers.createDefaultColumnsFromModel();
 		pnlUsers.add(tblUsers, BorderLayout.NORTH);
+		tblUsers.getSelectionModel().addListSelectionListener(new ListSelectionUsers());
 
 		// JButton's intitialization
 		btnAdd = new JButton();
@@ -65,6 +69,17 @@ public class UsersTable extends AbstractClientView
 		pnlUsers.add(btnAdd, BorderLayout.SOUTH);
 	}
 
+	private class ListSelectionUsers implements ListSelectionListener
+	{
+		@Override
+		public void valueChanged(ListSelectionEvent e)
+		{
+			int index = e.getFirstIndex();
+			int id = (Integer) tblUsers.getModel().getValueAt(index, 0);
+			getController().conversationOpened(id);
+		}
+	}
+	
 	public void actionPerformed(ActionEvent e) 
 	{
 		if(e.getSource() == btnAdd)
