@@ -109,7 +109,7 @@ public class ClientView extends AbstractClientView
 		
 		if(message.getAuthor().getId() == me.getId() && !messageFrameList.containsKey(id))
 		{
-			ClientMessageFrame frame = new ClientMessageFrame(getController());
+			ClientMessageFrame frame = new ClientMessageFrame(getController(), user);
 			frame.getFrame().addWindowListener(new MessageFrameCloseListener(id));
 			messageFrameList.put(id, frame);
 			
@@ -137,6 +137,19 @@ public class ClientView extends AbstractClientView
 	@Override
 	public void conversationUpdated(MessageConversationUpdated message)
 	{
+		User me = getController().getModel().getUserManager().getMe();
+		User author = message.getAuthor();
+		User user = message.getOtherThanId(author.getId());
 		
+		if(author.getId() != me.getId() && user.getId() == me.getId())
+		{
+			// Call conversationOpened from this
+			MessageConversationOpened mco = new MessageConversationOpened(message.getUsers(), user);
+			conversationOpened(mco);
+			
+			// Call conversationUpdate from ClientMessageFrame
+			ClientMessageFrame frame = messageFrameList.get(author.getId());
+			frame.conversationUpdated(message);
+		}
 	}
 }

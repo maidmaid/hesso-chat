@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import user.User;
 import model.ClientModel;
 import network.client.event.DisconnectionEvent;
 import network.client.event.MessageEvent;
@@ -46,6 +47,7 @@ public class ClientMessageFrame extends AbstractClientView implements ActionList
 	private JLabel lblReadMessage;
 	private JLabel lblInputMessage;
 	private JButton btnEnterMessage;
+	private User user;
 	
 	/**
 	 *CHOICE ELEMENT'S PREFIXING :
@@ -57,9 +59,10 @@ public class ClientMessageFrame extends AbstractClientView implements ActionList
 	 * JTextArea	:	are
 	 * */
 	
-	public ClientMessageFrame(AbstractController controller)
+	public ClientMessageFrame(AbstractController controller, User user)
 	{	
 		super(controller);
+		this.user = user;
 		
 		pnlContainer = new JPanel();
 		messageFrame = new JFrame();
@@ -130,7 +133,7 @@ public class ClientMessageFrame extends AbstractClientView implements ActionList
 		if(e.getSource() == btnEnterMessage)
 		{
 			message = areInputMessage.getText();
-			// TODO getController().conversationUpdated(id, message);
+			getController().conversationUpdated(user.getId(), message);
 		}
 	}
 	
@@ -209,8 +212,10 @@ public class ClientMessageFrame extends AbstractClientView implements ActionList
 	}
 
 	@Override
-	public void conversationUpdated(MessageConversationUpdated message) {
-		// TODO Auto-generated method stub
-		
+	public void conversationUpdated(MessageConversationUpdated message)
+	{
+		String username = message.getAuthor().getUsername();
+		String msg = message.getMessage();
+		areReadMessage.append(username + ": " + msg);
 	}
 }
