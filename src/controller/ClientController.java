@@ -1,7 +1,12 @@
 package controller;
 
+import java.util.ArrayList;
+
+import network.message.MessageConversationOpened;
 import model.AbstractModel;
 import model.ClientModel;
+import user.User;
+import user.UserManager;
 import view.client.ClientView;
 
 public class ClientController extends AbstractController
@@ -30,5 +35,23 @@ public class ClientController extends AbstractController
 	public ClientModel getModel()
 	{
 		return (ClientModel) super.getModel();
+	}
+	
+	/**
+	 * Open a conversation
+	 * @param id ID of User
+	 */
+	public void conversationOpened(int id)
+	{
+		UserManager manager = getModel().getUserManager();
+		User me = manager.getMe();
+		User user = manager.getById(id);
+		
+		ArrayList<User> users = new ArrayList<User>();
+		users.add(me);
+		users.add(user);
+		
+		MessageConversationOpened message = new MessageConversationOpened(users);
+		getModel().getClient().send(message.serialize());
 	}
 }
