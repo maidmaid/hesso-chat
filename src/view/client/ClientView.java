@@ -19,7 +19,6 @@ public class ClientView extends AbstractClientView
 {
 	private JFrame frame;
 	private ClientConnexionPanel pnlConnexion;
-	private ClientMessageFrame pnlMessage;
 	private UsersTable pnlUsers;
 	private Hashtable<Integer, ClientMessageFrame> messageFrameList;
 	
@@ -41,12 +40,9 @@ public class ClientView extends AbstractClientView
 		messageFrameList = new Hashtable<Integer,ClientMessageFrame>();
 		
 		pnlConnexion = new ClientConnexionPanel(controller);
-		pnlMessage = new ClientMessageFrame(controller);
 		pnlUsers = new UsersTable(controller);
 		frame.setContentPane(pnlConnexion.getContainer());
-		//frame.setContentPane(messagePanel.getContainer());
-		//frame.setContentPane(pnlUsers.getContainer());
-		
+
 		frame.setTitle("Client Application");
 		frame.setSize(400, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -58,11 +54,6 @@ public class ClientView extends AbstractClientView
 	public ClientConnexionPanel getConnexionPanel()
 	{
 		return pnlConnexion;
-	}
-	
-	public ClientMessageFrame getMessagePanel()
-	{
-		return pnlMessage;
 	}
 
 	public UsersTable getUsersPanel()

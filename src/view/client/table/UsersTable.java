@@ -19,6 +19,7 @@ import javax.swing.event.ListSelectionListener;
 import user.User;
 import user.UserManager;
 import view.client.AbstractClientView;
+import view.client.ClientMessageFrame;
 import view.client.ClientView;
 import network.client.event.DisconnectionEvent;
 import network.client.event.MessageEvent;
@@ -37,7 +38,7 @@ public class UsersTable extends AbstractClientView implements ActionListener
 	private JButton btnAdd = null;
 	private Hashtable<Integer, String> hteUsers = null;
 	private ClientView client;
-
+	
 	public UsersTable(AbstractController controller) {
 		super(controller);
 
@@ -76,7 +77,7 @@ public class UsersTable extends AbstractClientView implements ActionListener
 		{
 			int index = e.getFirstIndex();
 			int id = (Integer) tblUsers.getModel().getValueAt(index, 0);
-			getController().conversationOpened(id);
+			getController().conversationOpened(id);			
 		}
 	}
 	
