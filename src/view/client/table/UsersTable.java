@@ -98,9 +98,14 @@ public class UsersTable extends AbstractClientView
 	public void userChanged(MessageUserChanged message)
 	{
 		User user = message.getUser();
-		UsersModelTable model = (UsersModelTable) tblUsers.getModel();
-		model.getUserManager().updateUser(user);
-		model.fireTableDataChanged();
+		
+		// All users without me
+		if(getController().getModel().getUserManager().getMe().getId() != user.getId())
+		{
+			UsersModelTable model = (UsersModelTable) tblUsers.getModel();
+			model.getUserManager().updateUser(user);
+			model.fireTableDataChanged();
+		}
 	}
 
 	@Override
