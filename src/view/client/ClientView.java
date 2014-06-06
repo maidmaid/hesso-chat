@@ -1,5 +1,7 @@
 package view.client;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.Hashtable;
 
 import javax.swing.JFrame;
@@ -101,20 +103,40 @@ public class ClientView extends AbstractClientView
 	public void conversationOpened(MessageConversationOpened message)
 	{
 		User me = getController().getModel().getUserManager().getMe();
-		if(message.getAuthor().getId() == me.getId())
+		User user = message.getOtherThanId(me.getId());
+		Integer id = user.getId();
+		System.out.println(id);
+		
+		if(message.getAuthor().getId() == me.getId() && !messageFrameList.containsKey(id))
 		{
 			ClientMessageFrame frame = new ClientMessageFrame(getController());
+			frame.getFrame().addWindowListener(new MessageFrameCloseListener(id));
+			messageFrameList.put(id, frame);
+			
+			// Listener
 			getController().getModel().getMessageDecoder().addMessageListener(frame);
-			User user = message.getOtherThanId(me.getId());
-			user.getId();
 		}
 	}
 
+	private class MessageFrameCloseListener extends WindowAdapter
+	{
+		private int id;
+		
+		public MessageFrameCloseListener(int id)
+		{
+			this.id = id;
+		}
+		
+		@Override
+		public void windowClosed(WindowEvent e)
+		{
+			messageFrameList.remove(id);
+		}
+	}
+	
 	@Override
 	public void conversationUpdated(MessageConversationUpdated message)
 	{
-		message.getUsers();
-		message.getAuthor();
-		message.getMessage();	
+		
 	}
 }
