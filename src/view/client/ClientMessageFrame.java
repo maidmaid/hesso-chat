@@ -130,6 +130,7 @@ public class ClientMessageFrame extends AbstractClientView implements ActionList
 		if(e.getSource() == btnEnterMessage)
 		{
 			message = areInputMessage.getText();
+			// TODO getController().conversationUpdated(id, message);
 		}
 	}
 	

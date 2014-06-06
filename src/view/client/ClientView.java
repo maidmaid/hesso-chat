@@ -109,8 +109,11 @@ public class ClientView extends AbstractClientView
 	@Override
 	public void conversationOpened(MessageConversationOpened message)
 	{
+		
 		ClientMessageFrame frame = new ClientMessageFrame(getController());
 		getController().getModel().getMessageDecoder().addMessageListener(frame);
+		User u = message.getOtherThanId(getController().getModel().getUserManager().getMe().getId());
+		System.out.println(u);
 	}
 
 	@Override
