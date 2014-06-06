@@ -1,5 +1,6 @@
 package user;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -78,5 +79,12 @@ public class UserManager extends ArrayList<User>
 		{
 			u.setUsername(user.getUsername());
 		}
+	}
+	
+	public void saveUserName(PrintWriter P)
+	{
+		String username;
+		
+		P.println(" " + this);
 	}
 }

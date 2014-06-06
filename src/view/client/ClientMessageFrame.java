@@ -86,7 +86,6 @@ public class ClientMessageFrame extends AbstractClientView implements ActionList
 		areReadMessage.setPreferredSize(new Dimension(280,150));
 		areReadMessage.setMargin(null);           
 		areReadMessage.setBorder(BorderFactory.createEmptyBorder());
-		//readMessage.setEditable(false);
 		pnlContainer.add(new JScrollPane(areReadMessage));
 		
 		pnlReadMessage = new JPanel();

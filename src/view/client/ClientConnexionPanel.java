@@ -144,9 +144,14 @@ public class ClientConnexionPanel extends AbstractClientView implements ActionLi
 			username = fldUserNameChange.getText();
 			//set the username
 			getController().getModel().getUserManager().getMe().setUsername(username);
-
+			try {
+				getController().getModel().getUserName();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			pnlError.setVisible(false);
-
+			
 			ipAdress = txtIp.getText();
 
 			try
@@ -165,11 +170,7 @@ public class ClientConnexionPanel extends AbstractClientView implements ActionLi
 
 	}
 
-	public String changeUsername()
-	{
-		userManager.getMe().setUsername(username);
-		return username;
-	}
+
 
 	public String getIpAdress() {
 		return ipAdress;
