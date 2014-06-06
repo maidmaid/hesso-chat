@@ -3,6 +3,7 @@ package controller;
 import java.util.ArrayList;
 
 import network.message.MessageConversationOpened;
+import network.message.MessageConversationUpdated;
 import model.AbstractModel;
 import model.ClientModel;
 import user.User;
@@ -53,5 +54,24 @@ public class ClientController extends AbstractController
 		
 		MessageConversationOpened message = new MessageConversationOpened(users);
 		getModel().getClient().send(message.serialize());
+	}
+	
+	/**
+	 * Send a message in the conversation
+	 * @param id ID of user
+	 * @param message message
+	 */
+	public void conversationUpdated(int id, String message)
+	{
+		UserManager manager = getModel().getUserManager();
+		User author = manager.getMe();
+		User user = manager.getById(id);
+		
+		ArrayList<User> users = new ArrayList<User>();
+		users.add(author);
+		users.add(user);
+		
+		MessageConversationUpdated m = new MessageConversationUpdated(users, author, message);
+		getModel().getClient().send(m.serialize());
 	}
 }
