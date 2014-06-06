@@ -7,6 +7,7 @@ import network.client.event.ClientListener;
 import network.client.event.DisconnectionEvent;
 import network.client.event.MessageEvent;
 import network.message.MessageConversationOpened;
+import network.message.MessageConversationUpdated;
 import network.message.MessageIdAssigned;
 import network.message.MessageUserChanged;
 import network.message.MessageUserDisconnected;
@@ -98,6 +99,12 @@ public class ClientModel extends AbstractModel
 		{
 			// Not used
 			
+		}
+
+		@Override
+		public void conversationUpdated(MessageConversationUpdated message)
+		{
+			// TODO Auto-generated method stub
 		}
 	}
 }

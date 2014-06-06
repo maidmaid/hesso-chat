@@ -7,6 +7,7 @@ import java.io.ObjectInputStream;
 import javax.xml.bind.DatatypeConverter;
 
 import network.message.MessageConversationOpened;
+import network.message.MessageConversationUpdated;
 import network.message.MessageIdAssigned;
 import network.message.MessageInterface;
 import network.message.MessageUserChanged;
@@ -50,6 +51,10 @@ public class MessageDecoder extends AbstractMessageDecoder
 		else if(message.getClass() == MessageConversationOpened.class)
 		{
 			fireConversationOpened((MessageConversationOpened) message);
+		}
+		else if(message.getClass() == MessageConversationUpdated.class)
+		{
+			fireConversationUpdated((MessageConversationUpdated) message);
 		}
 	}
 }

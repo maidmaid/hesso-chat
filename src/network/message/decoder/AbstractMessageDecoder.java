@@ -3,6 +3,7 @@ package network.message.decoder;
 import java.util.ArrayList;
 
 import network.message.MessageConversationOpened;
+import network.message.MessageConversationUpdated;
 import network.message.MessageIdAssigned;
 import network.message.MessageUserChanged;
 import network.message.MessageUserDisconnected;
@@ -61,6 +62,14 @@ public class AbstractMessageDecoder
 		for(MessageListener l : listeners)
 		{
 			l.conversationOpened(message);
+		}
+	}
+	
+	public void fireConversationUpdated(MessageConversationUpdated message)
+	{
+		for(MessageListener l : listeners)
+		{
+			l.conversationUpdated(message);
 		}
 	}
 }

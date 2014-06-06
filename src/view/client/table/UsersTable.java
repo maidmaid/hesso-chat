@@ -19,6 +19,8 @@ import view.client.AbstractClientView;
 import view.client.ClientView;
 import network.client.event.DisconnectionEvent;
 import network.client.event.MessageEvent;
+import network.message.MessageConversationOpened;
+import network.message.MessageConversationUpdated;
 import network.message.MessageIdAssigned;
 import network.message.MessageUserChanged;
 import network.message.MessageUserDisconnected;
@@ -122,5 +124,17 @@ public class UsersTable extends AbstractClientView
 		model.getUserManager().remove(user);
 		tblUsers.setModel(model);
 		model.fireTableDataChanged();
+	}
+
+	@Override
+	public void conversationOpened(MessageConversationOpened message)
+	{
+		// TODO Auto-generated method stub	
+	}
+
+	@Override
+	public void conversationUpdated(MessageConversationUpdated message)
+	{
+		// TODO Auto-generated method stub
 	}
 }
