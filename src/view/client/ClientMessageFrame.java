@@ -134,6 +134,7 @@ public class ClientMessageFrame extends AbstractClientView implements ActionList
 		{
 			message = areInputMessage.getText();
 			getController().conversationUpdated(user.getId(), message);
+			areInputMessage.setText("");
 		}
 	}
 	
@@ -216,6 +217,6 @@ public class ClientMessageFrame extends AbstractClientView implements ActionList
 	{
 		String username = message.getAuthor().getUsername();
 		String msg = message.getMessage();
-		areReadMessage.append(username + ": " + msg);
+		areReadMessage.append(username + ": " + msg + "\r\n");
 	}
 }
