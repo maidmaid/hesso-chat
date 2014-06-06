@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 
 import network.client.event.DisconnectionEvent;
 import network.client.event.MessageEvent;
+import network.message.MessageConversationOpened;
+import network.message.MessageConversationUpdated;
 import network.message.MessageIdAssigned;
 import network.message.MessageUserChanged;
 import network.message.MessageUserDisconnected;
@@ -101,6 +103,22 @@ public class ClientView extends AbstractClientView
 	@Override
 	public void userDisconnected(MessageUserDisconnected message) {
 		User u = message.getUser();
+		
+	}
+
+	@Override
+	public void conversationOpened(MessageConversationOpened message) {
+		// TODO Auto-generated method stub
+		message.getUsers();
+		
+	}
+
+	@Override
+	public void conversationUpdated(MessageConversationUpdated message) {
+		// TODO Auto-generated method stub
+		message.getUsers();
+		message.getAuthor();
+		message.getMessage();
 		
 	}
 	
